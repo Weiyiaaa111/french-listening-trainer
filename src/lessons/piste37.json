@@ -1,0 +1,1476 @@
+{
+  "title": "阴谋论：访谈中的长句与论证",
+  "source": "France Inter（来源据用户提供文稿）",
+  "duration": 243.52,
+  "audioUrl": "./audio/piste37.mp3",
+  "transcriptNote": "文稿由用户提供，含 […] 省略、口语省略和自我修正；未补写省略内容。句子时间为本地自动对齐结果，尚未经逐句人工听校，可在下方微调。",
+  "intonationNote": "↗ 上扬 · ↘ 下沉 · → 延续。所有箭头均为根据句法给出的朗读建议，未据原音核准；不是声学测量或唯一正确读法。",
+  "sentences": [
+    {
+      "speaker": "Journaliste",
+      "section": "阴谋论的共同特征",
+      "text": "Et oui, la vérité est ailleurs, Anthony Lantian, Christophe Bourseiller.",
+      "translation": "没错，真相在别处， 安东尼·朗蒂安、克里斯托夫·布尔塞耶。",
+      "chunks": [
+        {
+          "text": "Et oui, la vérité est ailleurs,",
+          "translation": "没错，真相在别处，",
+          "role": "承接意群",
+          "tip": "开场引用；ailleurs 表示别处。",
+          "tone": "→",
+          "start": 9.8,
+          "end": 12.0
+        },
+        {
+          "text": "Anthony Lantian, Christophe Bourseiller.",
+          "translation": "安东尼·朗蒂安、克里斯托夫·布尔塞耶。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 12.0,
+          "end": 15.24
+        }
+      ],
+      "start": 9.8,
+      "end": 15.24
+    },
+    {
+      "speaker": "Intervenant",
+      "section": "阴谋论的共同特征",
+      "text": "Bien sûr, on est fans, on aime.",
+      "translation": "当然， 我们是粉丝， 我们喜欢。",
+      "chunks": [
+        {
+          "text": "Bien sûr,",
+          "translation": "当然，",
+          "role": "承接意群",
+          "tip": "on 在口语中可代替 nous。",
+          "tone": "→",
+          "start": 15.24,
+          "end": 16.08
+        },
+        {
+          "text": "on est fans,",
+          "translation": "我们是粉丝，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 16.08,
+          "end": 16.4
+        },
+        {
+          "text": "on aime.",
+          "translation": "我们喜欢。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 16.4,
+          "end": 16.96
+        }
+      ],
+      "start": 15.24,
+      "end": 16.96
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "阴谋论的共同特征",
+      "text": "Quels sont les dénominateurs communs que l’on retrouve dans la plupart des grands récits complotistes ?",
+      "translation": "有哪些共同点 是我们能发现的 在大多数大型阴谋论叙事中？",
+      "chunks": [
+        {
+          "text": "Quels sont les dénominateurs communs",
+          "translation": "有哪些共同点",
+          "role": "承接意群",
+          "tip": "que 作 retrouve 的宾语；疑问词开头的问句并非一律上扬。",
+          "tone": "→",
+          "start": 16.96,
+          "end": 19.12
+        },
+        {
+          "text": "que l’on retrouve",
+          "translation": "是我们能发现的",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 19.12,
+          "end": 19.92
+        },
+        {
+          "text": "dans la plupart des grands récits complotistes ?",
+          "translation": "在大多数大型阴谋论叙事中？",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 19.92,
+          "end": 22.44
+        }
+      ],
+      "start": 16.96,
+      "end": 22.44
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "阴谋论的共同特征",
+      "text": "C’est la contestation des vérités officielles ? Christophe Bourseiller ?",
+      "translation": "是对官方真相的质疑吗？ 克里斯托夫·布尔塞耶？",
+      "chunks": [
+        {
+          "text": "C’est la contestation des vérités officielles ?",
+          "translation": "是对官方真相的质疑吗？",
+          "role": "承接意群",
+          "tip": "确认式疑问可用上扬语调；随后点名邀请回应。",
+          "tone": "→",
+          "start": 22.44,
+          "end": 25.08
+        },
+        {
+          "text": "Christophe Bourseiller ?",
+          "translation": "克里斯托夫·布尔塞耶？",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↗",
+          "start": 25.08,
+          "end": 26.24
+        }
+      ],
+      "start": 22.44,
+      "end": 26.24
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "Oui, c’est l’idée que ce qu’on nous présente comme une vérité établie est louche, que la démocratie est trop transparente, c’est quand même bizarre, c’est l’idée que c’est trop évident.",
+      "translation": "对，就是这样一种想法： 别人向我们呈现的所谓既定真相很可疑， 民主制度过于透明， 这未免很奇怪， 就是觉得事情太显而易见了。",
+      "chunks": [
+        {
+          "text": "Oui, c’est l’idée",
+          "translation": "对，就是这样一种想法：",
+          "role": "承接意群",
+          "tip": "ce que 作 présente 的宾语；整个 ce qu’on nous présente… 作 est louche 的主语。",
+          "tone": "→",
+          "start": 26.24,
+          "end": 27.2
+        },
+        {
+          "text": "que ce qu’on nous présente comme une vérité établie est louche,",
+          "translation": "别人向我们呈现的所谓既定真相很可疑，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 27.2,
+          "end": 31.36
+        },
+        {
+          "text": "que la démocratie est trop transparente,",
+          "translation": "民主制度过于透明，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 31.36,
+          "end": 33.72
+        },
+        {
+          "text": "c’est quand même bizarre,",
+          "translation": "这未免很奇怪，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 33.72,
+          "end": 35.0
+        },
+        {
+          "text": "c’est l’idée que c’est trop évident.",
+          "translation": "就是觉得事情太显而易见了。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 35.0,
+          "end": 37.6
+        }
+      ],
+      "start": 26.24,
+      "end": 37.6
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "C’est l’idée aussi, ce qui est très important, c’est l’idée que rien ne peut arriver au hasard.",
+      "translation": "还有这样一种想法， 这一点很重要： 就是没有任何事情会偶然发生。",
+      "chunks": [
+        {
+          "text": "C’est l’idée aussi,",
+          "translation": "还有这样一种想法，",
+          "role": "承接意群",
+          "tip": "ce qui 作 est 的主语；rien ne… 表示没有任何事情。",
+          "tone": "→",
+          "start": 37.6,
+          "end": 38.72
+        },
+        {
+          "text": "ce qui est très important,",
+          "translation": "这一点很重要：",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 38.72,
+          "end": 40.04
+        },
+        {
+          "text": "c’est l’idée que rien ne peut arriver au hasard.",
+          "translation": "就是没有任何事情会偶然发生。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 40.04,
+          "end": 43.68
+        }
+      ],
+      "start": 37.6,
+      "end": 43.68
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "Il peut pas y avoir... un tsunami, par exemple, [...] vous voyez, rien n’arrive jamais par hasard.",
+      "translation": "不可能就这样发生…… 比如一场海啸，〔文稿省略〕 你看， 什么事情都不是偶然发生的。",
+      "chunks": [
+        {
+          "text": "Il peut pas y avoir...",
+          "translation": "不可能就这样发生……",
+          "role": "承接意群",
+          "tip": "原稿省略了否定 ne；[…] 表示用户文稿中有缺漏，不是要读出的词。",
+          "tone": "→",
+          "start": 43.68,
+          "end": 44.52
+        },
+        {
+          "text": "un tsunami, par exemple, [...]",
+          "translation": "比如一场海啸，〔文稿省略〕",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 44.52,
+          "end": 45.64
+        },
+        {
+          "text": "vous voyez,",
+          "translation": "你看，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 45.64,
+          "end": 46.12
+        },
+        {
+          "text": "rien n’arrive jamais par hasard.",
+          "translation": "什么事情都不是偶然发生的。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 46.12,
+          "end": 48.16
+        }
+      ],
+      "start": 43.68,
+      "end": 48.16
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "Et puis aussi l’idée que tout se tient, c’est-à-dire que tout se tient, c’est logique, tout s’enchaîne, en fait tout est cohérent.",
+      "translation": "还有一切都相互关联的想法， 也就是一切都有联系， 这合乎逻辑， 一切环环相扣， 实际上一切都是连贯的。",
+      "chunks": [
+        {
+          "text": "Et puis aussi l’idée que tout se tient,",
+          "translation": "还有一切都相互关联的想法，",
+          "role": "承接意群",
+          "tip": "se tenir / s’enchaîner / être cohérent 构成递进重述。",
+          "tone": "→",
+          "start": 48.16,
+          "end": 50.2
+        },
+        {
+          "text": "c’est-à-dire que tout se tient,",
+          "translation": "也就是一切都有联系，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 50.2,
+          "end": 51.8
+        },
+        {
+          "text": "c’est logique,",
+          "translation": "这合乎逻辑，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 51.8,
+          "end": 52.72
+        },
+        {
+          "text": "tout s’enchaîne,",
+          "translation": "一切环环相扣，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 52.72,
+          "end": 53.8
+        },
+        {
+          "text": "en fait tout est cohérent.",
+          "translation": "实际上一切都是连贯的。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 53.8,
+          "end": 55.2
+        }
+      ],
+      "start": 48.16,
+      "end": 55.2
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "C’est très rassurant, les théories du complot, parce que finalement ça veut dire que je ne serai jamais surpris par un événement.",
+      "translation": "阴谋论很能让人安心， 因为说到底这意味着 我永远不会因某件事而惊讶。",
+      "chunks": [
+        {
+          "text": "C’est très rassurant, les théories du complot,",
+          "translation": "阴谋论很能让人安心，",
+          "role": "承接意群",
+          "tip": "ce 与后置话题 les théories… 呼应；ne…jamais。",
+          "tone": "→",
+          "start": 55.2,
+          "end": 57.28
+        },
+        {
+          "text": "parce que finalement ça veut dire",
+          "translation": "因为说到底这意味着",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 57.28,
+          "end": 59.12
+        },
+        {
+          "text": "que je ne serai jamais surpris par un événement.",
+          "translation": "我永远不会因某件事而惊讶。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 59.12,
+          "end": 61.64
+        }
+      ],
+      "start": 55.2,
+      "end": 61.64
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的共同特征",
+      "text": "Il a une explication logique qui m’échappe, même s’il se met à pleuvoir...",
+      "translation": "事件有一种我还没理解的逻辑解释， 哪怕天开始下雨……",
+      "chunks": [
+        {
+          "text": "Il a une explication logique qui m’échappe,",
+          "translation": "事件有一种我还没理解的逻辑解释，",
+          "role": "承接意群",
+          "tip": "qui 作 échappe 的主语；m’ 是间接宾语。",
+          "tone": "→",
+          "start": 61.64,
+          "end": 63.72
+        },
+        {
+          "text": "même s’il se met à pleuvoir...",
+          "translation": "哪怕天开始下雨……",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 63.72,
+          "end": 64.88
+        }
+      ],
+      "start": 61.64,
+      "end": 64.88
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "阴谋论的历史起源",
+      "text": "Quels sont les ingrédients de base des thèses complotistes, Anthony Lantian ?",
+      "translation": "阴谋论观点有哪些基本要素， 安东尼·朗蒂安？",
+      "chunks": [
+        {
+          "text": "Quels sont les ingrédients de base des thèses complotistes,",
+          "translation": "阴谋论观点有哪些基本要素，",
+          "role": "承接意群",
+          "tip": "ingrédients 在这里比喻构成要素。",
+          "tone": "→",
+          "start": 64.88,
+          "end": 68.76
+        },
+        {
+          "text": "Anthony Lantian ?",
+          "translation": "安东尼·朗蒂安？",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 68.76,
+          "end": 70.44
+        }
+      ],
+      "start": 64.88,
+      "end": 70.44
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "阴谋论的历史起源",
+      "text": "Alors, en fait, euh... elles viennent justement d’être toutes évoquées, euh... c’est un peu... euh... [... ]",
+      "translation": "那么，其实，呃…… 刚才恰好已经全部提到了， 呃……有点像……〔文稿省略〕",
+      "chunks": [
+        {
+          "text": "Alors, en fait, euh...",
+          "translation": "那么，其实，呃……",
+          "role": "承接意群",
+          "tip": "venir de + 不定式表示刚刚；être évoquées 是被动式。",
+          "tone": "→",
+          "start": 70.44,
+          "end": 71.44
+        },
+        {
+          "text": "elles viennent justement d’être toutes évoquées,",
+          "translation": "刚才恰好已经全部提到了，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 71.44,
+          "end": 74.16
+        },
+        {
+          "text": "euh... c’est un peu... euh... [... ]",
+          "translation": "呃……有点像……〔文稿省略〕",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 74.16,
+          "end": 75.8
+        }
+      ],
+      "start": 70.44,
+      "end": 75.8
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "阴谋论的历史起源",
+      "text": "Y’a toujours eu des théories du complot, Christophe Bourseiller ?",
+      "translation": "一直以来都有阴谋论吗， 克里斯托夫·布尔塞耶？",
+      "chunks": [
+        {
+          "text": "Y’a toujours eu des théories du complot,",
+          "translation": "一直以来都有阴谋论吗，",
+          "role": "承接意群",
+          "tip": "Y’a 是口语 il y a；此处复合过去时 il y a eu。",
+          "tone": "→",
+          "start": 75.8,
+          "end": 78.6
+        },
+        {
+          "text": "Christophe Bourseiller ?",
+          "translation": "克里斯托夫·布尔塞耶？",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↗",
+          "start": 78.6,
+          "end": 79.44
+        }
+      ],
+      "start": 75.8,
+      "end": 79.44
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的历史起源",
+      "text": "Écoutez, je crois qu’il y a pas toujours eu des théories du complot. Y’a toujours eu des complots et y’a toujours eu des rumeurs.",
+      "translation": "听我说， 我认为并不是一直都有阴谋论。 阴谋一直存在， 谣言也一直存在。",
+      "chunks": [
+        {
+          "text": "Écoutez,",
+          "translation": "听我说，",
+          "role": "承接意群",
+          "tip": "原话省略 ne；区分 complot（阴谋）与 théorie du complot（阴谋论）。",
+          "tone": "→",
+          "start": 79.44,
+          "end": 79.56
+        },
+        {
+          "text": "je crois qu’il y a pas toujours eu des théories du complot.",
+          "translation": "我认为并不是一直都有阴谋论。",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 79.56,
+          "end": 81.64
+        },
+        {
+          "text": "Y’a toujours eu des complots",
+          "translation": "阴谋一直存在，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 81.64,
+          "end": 83.2
+        },
+        {
+          "text": "et y’a toujours eu des rumeurs.",
+          "translation": "谣言也一直存在。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 83.2,
+          "end": 84.84
+        }
+      ],
+      "start": 79.44,
+      "end": 84.84
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的历史起源",
+      "text": "Mais l’idée de la théorie du complot, c’est-à-dire de la théorisation rationnelle des complots, ça démarre en fait avec le monde moderne.",
+      "translation": "但阴谋论这种观念， 也就是对阴谋进行理性化的理论建构， 实际上是随着现代世界开始的。",
+      "chunks": [
+        {
+          "text": "Mais l’idée de la théorie du complot,",
+          "translation": "但阴谋论这种观念，",
+          "role": "承接意群",
+          "tip": "c’est-à-dire 插入解释；ça 复指前面的长话题。",
+          "tone": "→",
+          "start": 84.84,
+          "end": 86.92
+        },
+        {
+          "text": "c’est-à-dire de la théorisation rationnelle des complots,",
+          "translation": "也就是对阴谋进行理性化的理论建构，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 86.92,
+          "end": 90.2
+        },
+        {
+          "text": "ça démarre en fait avec le monde moderne.",
+          "translation": "实际上是随着现代世界开始的。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 90.2,
+          "end": 93.12
+        }
+      ],
+      "start": 84.84,
+      "end": 93.12
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的历史起源",
+      "text": "Ça démarre avec, même très précisément, avec la Révolution française, toute cette période des Lumières de la fin du XIX... du XVIIIe siècle et la Révolution.",
+      "translation": "准确一点说，它开始于 法国大革命， 十九……十八世纪末的这整个启蒙时期 以及大革命。",
+      "chunks": [
+        {
+          "text": "Ça démarre avec, même très précisément,",
+          "translation": "准确一点说，它开始于",
+          "role": "承接意群",
+          "tip": "保留 XIX…du XVIIIe 的自我修正，不把口误静默改成流畅书面语。",
+          "tone": "→",
+          "start": 93.12,
+          "end": 95.64
+        },
+        {
+          "text": "avec la Révolution française,",
+          "translation": "法国大革命，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 95.64,
+          "end": 97.36
+        },
+        {
+          "text": "toute cette période des Lumières de la fin du XIX... du XVIIIe siècle",
+          "translation": "十九……十八世纪末的这整个启蒙时期",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 97.36,
+          "end": 101.72
+        },
+        {
+          "text": "et la Révolution.",
+          "translation": "以及大革命。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 101.72,
+          "end": 103.24
+        }
+      ],
+      "start": 93.12,
+      "end": 103.24
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "阴谋论的历史起源",
+      "text": "Et le vrai, le premier pour moi, grand texte complotiste qui est vraiment, qui a servi de matrice à tout ce phénomène, c’est un texte de l’abbé Augustin Barruel qui s’appelait Les Mémoires pour servir à l’histoire du jacobinisme, dans lequel il explique donc que la Révolution française est un coup d’État.",
+      "translation": "而我认为第一篇真正重要的阴谋论文本， 也就是真正为这一整个现象奠定模式的文本， 是奥古斯丁·巴吕埃尔神父的一篇著作， 名为《雅各宾主义史料回忆录》， 在其中他解释说 法国大革命是一场政变。",
+      "chunks": [
+        {
+          "text": "Et le vrai, le premier pour moi, grand texte complotiste",
+          "translation": "而我认为第一篇真正重要的阴谋论文本，",
+          "role": "承接意群",
+          "tip": "qui 两次引导关系从句；dans lequel 的先行词是 texte。",
+          "tone": "→",
+          "start": 103.24,
+          "end": 106.12
+        },
+        {
+          "text": "qui est vraiment, qui a servi de matrice à tout ce phénomène,",
+          "translation": "也就是真正为这一整个现象奠定模式的文本，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 106.12,
+          "end": 108.6
+        },
+        {
+          "text": "c’est un texte de l’abbé Augustin Barruel",
+          "translation": "是奥古斯丁·巴吕埃尔神父的一篇著作，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 108.6,
+          "end": 111.0
+        },
+        {
+          "text": "qui s’appelait Les Mémoires pour servir à l’histoire du jacobinisme,",
+          "translation": "名为《雅各宾主义史料回忆录》，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 111.0,
+          "end": 114.28
+        },
+        {
+          "text": "dans lequel il explique donc",
+          "translation": "在其中他解释说",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 114.28,
+          "end": 115.28
+        },
+        {
+          "text": "que la Révolution française est un coup d’État.",
+          "translation": "法国大革命是一场政变。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 115.28,
+          "end": 117.24
+        }
+      ],
+      "start": 103.24,
+      "end": 117.24
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "与众不同的心理需求",
+      "text": "Anthony Lantian, le complotiste se considère très souvent comme un individu clairvoyant, à l’écart du troupeau des moutons.",
+      "translation": "安东尼·朗蒂安， 阴谋论者常把自己看成清醒的人， 与随大流的羊群保持距离。",
+      "chunks": [
+        {
+          "text": "Anthony Lantian,",
+          "translation": "安东尼·朗蒂安，",
+          "role": "承接意群",
+          "tip": "se considérer comme：把自己看作；moutons 是随众者的比喻。",
+          "tone": "→",
+          "start": 117.24,
+          "end": 118.8
+        },
+        {
+          "text": "le complotiste se considère très souvent comme un individu clairvoyant,",
+          "translation": "阴谋论者常把自己看成清醒的人，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 118.8,
+          "end": 123.12
+        },
+        {
+          "text": "à l’écart du troupeau des moutons.",
+          "translation": "与随大流的羊群保持距离。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 123.12,
+          "end": 125.24
+        }
+      ],
+      "start": 117.24,
+      "end": 125.24
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "与众不同的心理需求",
+      "text": "Lui, mais pas vous, connaît les tenants et les aboutissants, euh... Christophe Bourseiller le disait, le complotiste a la certitude que tout se tient, que tout est lié.",
+      "translation": "他，而不是你们， 知道事情的来龙去脉； 呃……克里斯托夫·布尔塞耶刚才也说过， 阴谋论者确信 一切都有联系， 一切都相互关联。",
+      "chunks": [
+        {
+          "text": "Lui, mais pas vous,",
+          "translation": "他，而不是你们，",
+          "role": "承接意群",
+          "tip": "Lui 是重读人称代词，不是这里的间接宾语；le 代替前述观点。",
+          "tone": "→",
+          "start": 125.24,
+          "end": 126.36
+        },
+        {
+          "text": "connaît les tenants et les aboutissants,",
+          "translation": "知道事情的来龙去脉；",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 126.36,
+          "end": 128.16
+        },
+        {
+          "text": "euh... Christophe Bourseiller le disait,",
+          "translation": "呃……克里斯托夫·布尔塞耶刚才也说过，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 128.16,
+          "end": 130.72
+        },
+        {
+          "text": "le complotiste a la certitude",
+          "translation": "阴谋论者确信",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 130.72,
+          "end": 131.92
+        },
+        {
+          "text": "que tout se tient,",
+          "translation": "一切都有联系，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 131.92,
+          "end": 132.72
+        },
+        {
+          "text": "que tout est lié.",
+          "translation": "一切都相互关联。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 132.72,
+          "end": 134.0
+        }
+      ],
+      "start": 125.24,
+      "end": 134.0
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "与众不同的心理需求",
+      "text": "Alors effectivement, donc ça c’est le sujet de ma thèse.",
+      "translation": "的确， 这就是我论文研究的主题。",
+      "chunks": [
+        {
+          "text": "Alors effectivement,",
+          "translation": "的确，",
+          "role": "承接意群",
+          "tip": "ça c’est 为口语话题重提。",
+          "tone": "→",
+          "start": 134.0,
+          "end": 134.84
+        },
+        {
+          "text": "donc ça c’est le sujet de ma thèse.",
+          "translation": "这就是我论文研究的主题。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 134.84,
+          "end": 136.32
+        }
+      ],
+      "start": 134.0,
+      "end": 136.32
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "与众不同的心理需求",
+      "text": "Donc on a montré, en fait, une thèse qui a été réalisée à l’Université Grenoble Alpes sous la direction de Dominique Muller et de Cécile Murât, et on a montré dans cette thèse que les personnes qui veulent se distinguer, qui cherchent à se différencier des autres, ont en général tendance à plus croire aux théories du complot.",
+      "translation": "其实我们证明了—— 这篇论文是在格勒诺布尔阿尔卑斯大学完成的， 由多米尼克·米勒和塞西尔·穆拉指导—— 我们在论文中证明， 那些想要与众不同的人， 那些寻求与他人区别开来的人， 总体上更容易相信阴谋论。",
+      "chunks": [
+        {
+          "text": "Donc on a montré, en fait,",
+          "translation": "其实我们证明了——",
+          "role": "承接意群",
+          "tip": "口语中断后重启 on a montré；多个 qui 从句修饰 personnes，真正主句动词是 ont。",
+          "tone": "→",
+          "start": 136.32,
+          "end": 137.72
+        },
+        {
+          "text": "une thèse qui a été réalisée à l’Université Grenoble Alpes",
+          "translation": "这篇论文是在格勒诺布尔阿尔卑斯大学完成的，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 137.72,
+          "end": 140.2
+        },
+        {
+          "text": "sous la direction de Dominique Muller et de Cécile Murât,",
+          "translation": "由多米尼克·米勒和塞西尔·穆拉指导——",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 140.2,
+          "end": 142.04
+        },
+        {
+          "text": "et on a montré dans cette thèse",
+          "translation": "我们在论文中证明，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 142.04,
+          "end": 143.44
+        },
+        {
+          "text": "que les personnes qui veulent se distinguer,",
+          "translation": "那些想要与众不同的人，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 143.44,
+          "end": 146.16
+        },
+        {
+          "text": "qui cherchent à se différencier des autres,",
+          "translation": "那些寻求与他人区别开来的人，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 146.16,
+          "end": 148.16
+        },
+        {
+          "text": "ont en général tendance à plus croire aux théories du complot.",
+          "translation": "总体上更容易相信阴谋论。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 148.16,
+          "end": 150.52
+        }
+      ],
+      "start": 136.32,
+      "end": 150.52
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "与众不同的心理需求",
+      "text": "Et alors ce qui est intéressant, c’est que le fait de manipuler la situation, dans le sens où on pousse les personnes, dans une situation donnée, à chercher à se distinguer, ça va aussi se traduire par de plus fortes croyances aux théories du complot.",
+      "translation": "有意思的是， 对情境施加干预， 也就是在特定情境中促使人们 寻求与众不同， 这也会表现为 更强烈的阴谋论信念。",
+      "chunks": [
+        {
+          "text": "Et alors ce qui est intéressant,",
+          "translation": "有意思的是，",
+          "role": "承接意群",
+          "tip": "ce qui 主语；pousser quelqu’un à；se traduire par 表现为。",
+          "tone": "→",
+          "start": 150.52,
+          "end": 151.84
+        },
+        {
+          "text": "c’est que le fait de manipuler la situation,",
+          "translation": "对情境施加干预，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 151.84,
+          "end": 154.2
+        },
+        {
+          "text": "dans le sens où on pousse les personnes, dans une situation donnée,",
+          "translation": "也就是在特定情境中促使人们",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 154.2,
+          "end": 157.32
+        },
+        {
+          "text": "à chercher à se distinguer,",
+          "translation": "寻求与众不同，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 157.32,
+          "end": 158.76
+        },
+        {
+          "text": "ça va aussi se traduire",
+          "translation": "这也会表现为",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 158.76,
+          "end": 159.52
+        },
+        {
+          "text": "par de plus fortes croyances aux théories du complot.",
+          "translation": "更强烈的阴谋论信念。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 159.52,
+          "end": 161.52
+        }
+      ],
+      "start": 150.52,
+      "end": 161.52
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "与众不同的心理需求",
+      "text": "Donc ça c’est la thèse qui est défendue, en fait, dans le cadre de mes travaux.",
+      "translation": "这就是我所提出并支持的论点， 在我的研究工作中。",
+      "chunks": [
+        {
+          "text": "Donc ça c’est la thèse qui est défendue, en fait,",
+          "translation": "这就是我所提出并支持的论点，",
+          "role": "承接意群",
+          "tip": "thèse 既可指学位论文，也可指论点；est défendue 为被动式。",
+          "tone": "→",
+          "start": 161.52,
+          "end": 163.6
+        },
+        {
+          "text": "dans le cadre de mes travaux.",
+          "translation": "在我的研究工作中。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 163.6,
+          "end": 165.44
+        }
+      ],
+      "start": 161.52,
+      "end": 165.44
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "优越感与真相叙事",
+      "text": "Christophe Bourseiller, pour vous, il existe une forme de jouissance chez le complotiste.",
+      "translation": "克里斯托夫·布尔塞耶， 在您看来， 阴谋论者会有某种快感。",
+      "chunks": [
+        {
+          "text": "Christophe Bourseiller,",
+          "translation": "克里斯托夫·布尔塞耶，",
+          "role": "承接意群",
+          "tip": "il existe 引出存在；pour vous 表示依您看。",
+          "tone": "→",
+          "start": 165.44,
+          "end": 166.52
+        },
+        {
+          "text": "pour vous,",
+          "translation": "在您看来，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 166.52,
+          "end": 166.76
+        },
+        {
+          "text": "il existe une forme de jouissance chez le complotiste.",
+          "translation": "阴谋论者会有某种快感。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 166.76,
+          "end": 170.28
+        }
+      ],
+      "start": 165.44,
+      "end": 170.28
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "Ben oui, parce que c’est quelqu’un qui se dit : « Moi j’ai compris, enfin les autres sont tous des aveugles. »",
+      "translation": "当然， 因为这样的人会对自己说： “我明白了， 别人全都是盲人。”",
+      "chunks": [
+        {
+          "text": "Ben oui,",
+          "translation": "当然，",
+          "role": "承接意群",
+          "tip": "qui 作 se dit 的主语；Moi 强调自我，和 les autres 对照。",
+          "tone": "→",
+          "start": 170.28,
+          "end": 170.56
+        },
+        {
+          "text": "parce que c’est quelqu’un qui se dit :",
+          "translation": "因为这样的人会对自己说：",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 170.56,
+          "end": 171.72
+        },
+        {
+          "text": "« Moi j’ai compris,",
+          "translation": "“我明白了，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 171.72,
+          "end": 172.92
+        },
+        {
+          "text": "enfin les autres sont tous des aveugles. »",
+          "translation": "别人全都是盲人。”",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 172.92,
+          "end": 174.6
+        }
+      ],
+      "start": 170.28,
+      "end": 174.6
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "Au pays des aveugles, le borgne est roi.",
+      "translation": "在盲人的国度， 独眼者就是国王。",
+      "chunks": [
+        {
+          "text": "Au pays des aveugles,",
+          "translation": "在盲人的国度，",
+          "role": "承接意群",
+          "tip": "谚语；前半交代框架，后半收束。",
+          "tone": "→",
+          "start": 174.6,
+          "end": 175.24
+        },
+        {
+          "text": "le borgne est roi.",
+          "translation": "独眼者就是国王。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 175.24,
+          "end": 176.52
+        }
+      ],
+      "start": 174.6,
+      "end": 176.52
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "Donc il se dit : « Moi ça y est, je connais, je sais les tenants et les aboutissants. »",
+      "translation": "所以他对自己说： “我现在明白了， 我懂了， 我知道来龙去脉了。”",
+      "chunks": [
+        {
+          "text": "Donc il se dit :",
+          "translation": "所以他对自己说：",
+          "role": "承接意群",
+          "tip": "ça y est 是固定表达，表示到了、成了、明白了，不能逐字译。",
+          "tone": "→",
+          "start": 176.52,
+          "end": 177.08
+        },
+        {
+          "text": "« Moi ça y est,",
+          "translation": "“我现在明白了，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 177.08,
+          "end": 177.68
+        },
+        {
+          "text": "je connais,",
+          "translation": "我懂了，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 177.68,
+          "end": 178.36
+        },
+        {
+          "text": "je sais les tenants et les aboutissants. »",
+          "translation": "我知道来龙去脉了。”",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 178.36,
+          "end": 179.92
+        }
+      ],
+      "start": 176.52,
+      "end": 179.92
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "[...] C’est plus la peine de nous raconter des bobards, vous pouvez nous faire votre propagande, vous les médias, mais en réalité on le sait maintenant, on sait la vérité.",
+      "translation": "〔文稿省略〕再编瞎话骗我们也没用了， 你们媒体尽管做你们的宣传， 可实际上我们现在知道了， 我们知道真相。",
+      "chunks": [
+        {
+          "text": "[...] C’est plus la peine de nous raconter des bobards,",
+          "translation": "〔文稿省略〕再编瞎话骗我们也没用了，",
+          "role": "承接意群",
+          "tip": "C’est plus… 中省略 ne；plus 在此表示不再。",
+          "tone": "→",
+          "start": 179.92,
+          "end": 182.32
+        },
+        {
+          "text": "vous pouvez nous faire votre propagande, vous les médias,",
+          "translation": "你们媒体尽管做你们的宣传，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 182.32,
+          "end": 184.76
+        },
+        {
+          "text": "mais en réalité on le sait maintenant,",
+          "translation": "可实际上我们现在知道了，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 184.76,
+          "end": 186.8
+        },
+        {
+          "text": "on sait la vérité.",
+          "translation": "我们知道真相。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 186.8,
+          "end": 187.96
+        }
+      ],
+      "start": 179.92,
+      "end": 187.96
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "Et c’est l’idée que la vérité, elle est aujourd’hui sur Internet et que les mensonges, c’est sur France Inter, c’est dans les journaux.",
+      "translation": "其想法就是： 真相如今在互联网上， 而谎言在法国国际广播电台里， 在报纸上。",
+      "chunks": [
+        {
+          "text": "Et c’est l’idée",
+          "translation": "其想法就是：",
+          "role": "承接意群",
+          "tip": "这是受访者对阴谋论者观点的转述，不是网站事实断言；话题重复 la vérité, elle。",
+          "tone": "→",
+          "start": 187.96,
+          "end": 188.8
+        },
+        {
+          "text": "que la vérité, elle est aujourd’hui sur Internet",
+          "translation": "真相如今在互联网上，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 188.8,
+          "end": 192.12
+        },
+        {
+          "text": "et que les mensonges, c’est sur France Inter,",
+          "translation": "而谎言在法国国际广播电台里，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 192.12,
+          "end": 194.52
+        },
+        {
+          "text": "c’est dans les journaux.",
+          "translation": "在报纸上。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 194.52,
+          "end": 195.04
+        }
+      ],
+      "start": 187.96,
+      "end": 195.04
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "优越感与真相叙事",
+      "text": "En ce moment même !",
+      "translation": "就在此时此刻！",
+      "chunks": [
+        {
+          "text": "En ce moment même !",
+          "translation": "就在此时此刻！",
+          "role": "句末意群",
+          "tip": "插话；此句的表达效果需回听原音，不从感叹号推断实际音高。",
+          "tone": "↘",
+          "start": 195.04,
+          "end": 195.96
+        }
+      ],
+      "start": 195.04,
+      "end": 195.96
+    },
+    {
+      "speaker": "Christophe Bourseiller",
+      "section": "优越感与真相叙事",
+      "text": "En ce moment même, nous mentons, mais que par contre si on ouvre Internet et qu’on tombe alors sur des sites absolument délirants, de mon point de vue certes, euh..., c’est la vérité qui s’exprime.",
+      "translation": "就在此时，我们在说谎； 可相反，如果打开互联网， 碰到一些完全荒诞的网站， 当然这是从我的角度说的，呃…… 那就成了真相在发声。",
+      "chunks": [
+        {
+          "text": "En ce moment même, nous mentons,",
+          "translation": "就在此时，我们在说谎；",
+          "role": "承接意群",
+          "tip": "继续模仿其观点；si…et que… 为并列条件；c’est…qui 强调主语。",
+          "tone": "→",
+          "start": 195.96,
+          "end": 197.6
+        },
+        {
+          "text": "mais que par contre si on ouvre Internet",
+          "translation": "可相反，如果打开互联网，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 197.6,
+          "end": 199.32
+        },
+        {
+          "text": "et qu’on tombe alors sur des sites absolument délirants,",
+          "translation": "碰到一些完全荒诞的网站，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 199.32,
+          "end": 202.0
+        },
+        {
+          "text": "de mon point de vue certes, euh...,",
+          "translation": "当然这是从我的角度说的，呃……",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 202.0,
+          "end": 203.52
+        },
+        {
+          "text": "c’est la vérité qui s’exprime.",
+          "translation": "那就成了真相在发声。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 203.52,
+          "end": 204.72
+        }
+      ],
+      "start": 195.96,
+      "end": 204.72
+    },
+    {
+      "speaker": "Journaliste",
+      "section": "为何难以改变信念",
+      "text": "Anthony Lantian, pourquoi est-il si difficile de réfuter les opinions, les croyances proférées par les conspirationnistes ?",
+      "translation": "安东尼·朗蒂安， 为什么如此难以驳斥那些意见， 那些由阴谋论者宣扬的信念？",
+      "chunks": [
+        {
+          "text": "Anthony Lantian,",
+          "translation": "安东尼·朗蒂安，",
+          "role": "承接意群",
+          "tip": "pourquoi est-il：疑问倒装；proférées 修饰 croyances。",
+          "tone": "→",
+          "start": 204.72,
+          "end": 205.52
+        },
+        {
+          "text": "pourquoi est-il si difficile de réfuter les opinions,",
+          "translation": "为什么如此难以驳斥那些意见，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 205.52,
+          "end": 210.36
+        },
+        {
+          "text": "les croyances proférées par les conspirationnistes ?",
+          "translation": "那些由阴谋论者宣扬的信念？",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↗",
+          "start": 210.36,
+          "end": 213.08
+        }
+      ],
+      "start": 204.72,
+      "end": 213.08
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "为何难以改变信念",
+      "text": "Alors les croyances, de manière générale, elles ont tendance à se cristalliser.",
+      "translation": "总体来说，信念 有趋于固化的倾向。",
+      "chunks": [
+        {
+          "text": "Alors les croyances, de manière générale,",
+          "translation": "总体来说，信念",
+          "role": "承接意群",
+          "tip": "les croyances, elles 为口语话题重复；avoir tendance à。",
+          "tone": "→",
+          "start": 213.08,
+          "end": 214.24
+        },
+        {
+          "text": "elles ont tendance à se cristalliser.",
+          "translation": "有趋于固化的倾向。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 214.24,
+          "end": 215.8
+        }
+      ],
+      "start": 213.08,
+      "end": 215.8
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "为何难以改变信念",
+      "text": "En fait, elles forment un système cohérent, un système de croyance, ce qui fait que, en fait, on peut très très difficilement amener une personne à changer ses opinions, et d’autant plus de manière très courte, enfin, quand on a... très... un laps de temps très très court, euh...",
+      "translation": "实际上，它们组成了一个连贯的体系， 一个信念体系， 这就导致 很难很难让一个人改变看法， 尤其是在非常短的情况下， 也就是说，只有……非常……非常短的时间时，呃……",
+      "chunks": [
+        {
+          "text": "En fait, elles forment un système cohérent,",
+          "translation": "实际上，它们组成了一个连贯的体系，",
+          "role": "承接意群",
+          "tip": "ce qui 指前面整个事实；amener quelqu’un à；保留口语重启，不把难句润色成原话。",
+          "tone": "→",
+          "start": 215.8,
+          "end": 217.76
+        },
+        {
+          "text": "un système de croyance,",
+          "translation": "一个信念体系，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 217.76,
+          "end": 218.84
+        },
+        {
+          "text": "ce qui fait que, en fait,",
+          "translation": "这就导致",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 218.84,
+          "end": 220.0
+        },
+        {
+          "text": "on peut très très difficilement amener une personne à changer ses opinions,",
+          "translation": "很难很难让一个人改变看法，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 220.0,
+          "end": 223.72
+        },
+        {
+          "text": "et d’autant plus de manière très courte,",
+          "translation": "尤其是在非常短的情况下，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 223.72,
+          "end": 225.2
+        },
+        {
+          "text": "enfin, quand on a... très... un laps de temps très très court, euh...",
+          "translation": "也就是说，只有……非常……非常短的时间时，呃……",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 225.2,
+          "end": 229.52
+        }
+      ],
+      "start": 215.8,
+      "end": 229.52
+    },
+    {
+      "speaker": "Anthony Lantian",
+      "section": "为何难以改变信念",
+      "text": "Et en fait, donc, comme ça vient, en fait, euh... permettre aux personnes, en fait, de voir le monde, ça, ça touche à la vision des personnes, de leur vision du monde et leur identité.",
+      "translation": "而且，因为这实际上，呃…… 帮助人们认识世界， 所以它触及人们的看法， 触及他们的世界观与身份认同。",
+      "chunks": [
+        {
+          "text": "Et en fait, donc, comme ça vient, en fait, euh...",
+          "translation": "而且，因为这实际上，呃……",
+          "role": "承接意群",
+          "tip": "permettre à quelqu’un de；toucher à：涉及、触及；文稿句法不完整，保留原貌。",
+          "tone": "→",
+          "start": 229.52,
+          "end": 232.8
+        },
+        {
+          "text": "permettre aux personnes, en fait, de voir le monde,",
+          "translation": "帮助人们认识世界，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 232.8,
+          "end": 235.92
+        },
+        {
+          "text": "ça, ça touche à la vision des personnes,",
+          "translation": "所以它触及人们的看法，",
+          "role": "承接意群",
+          "tip": "与后面的内容相连，先不要在此收束。",
+          "tone": "→",
+          "start": 235.92,
+          "end": 237.88
+        },
+        {
+          "text": "de leur vision du monde et leur identité.",
+          "translation": "触及他们的世界观与身份认同。",
+          "role": "句末意群",
+          "tip": "结合原音体会收束；箭头只是本句朗读建议。",
+          "tone": "↘",
+          "start": 237.88,
+          "end": 239.48
+        }
+      ],
+      "start": 229.52,
+      "end": 239.48
+    }
+  ]
+}
