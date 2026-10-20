@@ -1,3 +1,4 @@
+import {expandShortSample,airportDialogue} from './dialogue-expansion';
 import {dailyScenes} from './daily-scenes';
 import type { ProsodyPart } from './prosody';
 import piste37 from './lessons/piste37.json';
@@ -17,7 +18,7 @@ const shortTranslations:Record<string,string[]>={
  'daily-2':['我还没有收到发票。','你一收到，能把它发给我吗？','我需要它来确认订单。']
 };
 const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip],i)=>({text,role,tip,translation:shortTranslations[id]?.[i]})),tags,sample:true});
-export const seeds: Exercise[] = [
+const baseSeeds: Exercise[] = [
 {id:'piste37-complot',module:'c1',date:'2026-10-20',title:'真人原音｜阴谋论访谈 · 4 分钟',translation:'根据你提供的 France Inter 访谈音频与文稿，逐句精听、识别论证结构。',chunks:piste37.sentences.map(s=>({text:s.text,role:s.section,tip:s.speaker})),tags:['真人原音','35 句','语调建议'],sample:false,audioUrl:piste37.audioUrl,lesson:piste37 as unknown as LongLesson},
 ...extraSeeds,
 ...dailyScenes,
@@ -30,6 +31,7 @@ make('c1-2','c1','2026-10-19','访谈：政策的实际效果','虽然这项措�
 make('daily-1','daily','2026-10-20','把文件带到办公室','你给我的那些文件，我放在办公室了；如果你今天下午去那里，你可以把它们取回来。',[["Les documents que tu m’as donnés,","关系从句 · 过去分词配合","que 指 documents，置前直接宾语使 donnés 加 s。"],["je les ai laissés au bureau ;","直接宾语 les","les 代替 documents，laissés 与其配合。"],["si tu y passes cet après-midi, tu peux les récupérer.","地点代词 y","y 代替 au bureau；les 仍指文件。"]],['les','y','复合过去时']),
 make('daily-2','daily','2026-10-19','确认付款与送货','我还没有收到发票。你一收到，就能把它发给我吗？我需要它来确认订单。',[["Je n’ai pas encore reçu la facture.","复合过去时否定","ne…pas encore 表示还没有。"],["Dès que tu la reçois, peux-tu me l’envoyer ?","时间连接词 · 双代词","me 在 le/la 前；la 在元音前省音为 l’。"],["J’en ai besoin pour confirmer la commande.","代词 en","en 替代 de la facture，与 avoir besoin de 呼应。"]],['la','en','否定式'])
 ];
+export const seeds:Exercise[]=[...baseSeeds.map(expandShortSample),airportDialogue];
 export const fullText = (e:Exercise) => e.chunks.map(c=>c.text).join(' ');
 export function normalize(s:string){return s.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,' ').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();}
 export function mergeExercises(existing:Exercise[], input:unknown):{items:Exercise[];added:number} {

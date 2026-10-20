@@ -12,7 +12,7 @@ React + TypeScript + Vite 静态网站，支持 DALF C1、工程法语与日常�
 
 切换整份材料的按钮明确标为「下一个对话」，区别于句子编号和复习卡片的「下一张」。
 
-单句专项保持「一整句 → 多个意群」，长材料保持「多句 → 句内意群」。真人时间轴保留，合成材料的意群与语调为句法建议，并非声学测量。
+原有短句示例已扩写成8轮场景对话，另新增12轮杜阿拉机场行李与接机场景；现有示例均至少8个句段。原句与译文保留在对话中，新增台词明确属于编写的示例，不冒充用户的历史经历。个人导入的原始积累保留，不擅自改写。真人时间轴保留，合成材料的意群与语调为句法建议，并非声学测量。
 
 ## 添加材料
 
@@ -44,7 +44,8 @@ React + TypeScript + Vite 静态网站，支持 DALF C1、工程法语与日常�
 - 使用浏览器实际 `getUserMedia` 与 `MediaRecorder`，支持录制、立即回放、下载、删除，最长5分钟。处理权限拒绝、无设备、占用、不支持、空录音和录制失败。
 - 麦克风要求 HTTPS 或 localhost。切句或翻页会停止正在录制的对应声音，同一材料中已录的整篇、单句、意群声音分别保留。离开材料或刷新后临时录音释放；需保留请下载。录音不上传、不包含在 JSON 备份中。
 - 学习数据保存在当前浏览器 `localStorage`，不跨设备自动同步，建议导出备份。
-- 优先使用浏览器法语语音，可选择设备声音。等待语音列表就绪后仍无可用法语声音时，自动切换到独立 Web Worker 中的 eSpeak-NG 基础法语合成，支持内置和新粘贴的文本，无需收费 API。初次按需下载约18 MB 的 WebAssembly 音源；后续可利用浏览器缓存。其音色和韵律较机械，界面明确标记，不是训练后的人声，也不能等同真人录音。音源加载失败会提示重试，不会静默无声。
+- 内置示例现在优先使用已生成的MP3音频文件，整篇、单句、意群均可直接播放，不依赖系统法语声音或首次WASM下载。所有材料都显示可见的音频播放器，手机拦截自动播放时可直接点播放器重试。这些是基础合成音，韵律仍较机械，不是自然人声。
+- 无预生成音频的个人文本优先使用浏览器法语语音，可选择设备声音。等待语音列表就绪后仍无可用法语声音时，自动切换到独立 Web Worker 中的 eSpeak-NG 基础法语合成，支持内置和新粘贴的文本，无需收费 API。初次按需下载约18 MB 的 WebAssembly 音源；后续可利用浏览器缓存。其音色和韵律较机械，界面明确标记，不是训练后的人声，也不能等同真人录音。音源加载失败会提示重试，不会静默无声。
 - 备用引擎的许可及源码信息见 [public/notices/espeak-ng-source.txt](public/notices/espeak-ng-source.txt) 与 [GPL 许可](public/notices/espeak-ng-license.txt)。
 - `audioUrl` 可在整篇或句子中指定 HTTPS 真人音源。带句/意群起止时间的真人素材使用 `lesson` 数据结构（见 `src/long-lesson.ts`、`src/lessons/piste37.json`）。上传的 Piste 37 边界为自动对齐，仍待人工听校，可在第二页调整本句起止时间；微调仅保存在本浏览器。
 - `/`、`↗`、`↘`、`→` 是教学标注，不发送给合成器，不保证合成音会按箭头变化。
@@ -72,7 +73,7 @@ npm run test:e2e
 CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e
 ```
 
-浏览器测试包括实际 MediaRecorder 录制浏览器测试音轨与回放、删除、翻页/切句保留、原音时间范围和循环、无系统法语声音时实际生成WAV并播放、三页流程、解析开关、独立意群显隐与播放、选择卡反馈及重练、表达排序核对、材料移动/删除/撤销和刷新持久化、收藏与导入持久化、真实剪贴板粘贴及手机布局。实体手机麦克风、Safari 和不同系统法语声音仍需设备实测。
+浏览器测试包括实际 MediaRecorder 录制浏览器测试音轨与回放、删除、翻页/切句保留、原音时间范围和循环、无系统法语声音时实际生成WAV并播放、三页流程、解析开关、独立意群显隐与播放、禁止系统语音及WASM时机场音频直接播放、浏览器拦截播放后的重试、选择卡反馈及重练、表达排序核对、材料移动/删除/撤销和刷新持久化、收藏与导入持久化、真实剪贴板粘贴及手机布局。实体手机麦克风、Safari 和不同系统法语声音仍需设备实测。
 
 ## 部署
 
@@ -83,3 +84,14 @@ GitHub Pages：仓库设为支持 Pages 的可见性/套餐，在 Settings → P
 https://weiyiaaa111.github.io/french-listening-trainer/
 
 专用参数：`?lesson=piste37-complot` 直达上传材料，`?add=paste` 打开粘贴窗口。代码推送与线上部署完成是两个状态，需在 Actions 查看部署结果。
+
+## 重新生成示例音频
+
+`public/audio/samples/` 与 `src/sample-audio.json` 是随网站发布的示例音频及索引，不在用户浏览器临时生成。生成工具需要 ffmpeg 和支持 eSpeak C ABI 的本地引擎：
+
+```bash
+node scripts/export-sample-audio.mjs /tmp/ecoute-static-speech.json
+python scripts/generate-sample-audio.py --input /tmp/ecoute-static-speech.json --engine /path/to/espeak-library.so --data /path/to/espeak-parent-directory
+```
+
+本次使用现有训练环境中 Piper 附带的 eSpeak-NG 引擎与法语语音数据生成，未调用收费服务，未训练新声音模型。普通安装、构建和部署不需要重新生成音频。

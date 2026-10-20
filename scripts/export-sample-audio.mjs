@@ -1,0 +1,4 @@
+import {createServer} from 'vite';
+import fs from 'node:fs';
+const server=await createServer({server:{middlewareMode:true}});
+try{const {seeds}=await server.ssrLoadModule('/src/data.ts');const {trainingSentences}=await server.ssrLoadModule('/src/training-model.ts');const {spokenFrench}=await server.ssrLoadModule('/src/prosody.ts');const input={};for(const e of seeds.filter(e=>e.sample&&!e.lesson)){const sentences=trainingSentences(e);input[sentences.map(s=>s.text).join(' ')]=sentences.map(s=>spokenFrench(s.text)).join(' ');for(const sentence of sentences){input[sentence.text]=spokenFrench(sentence.text);for(const c of sentence.chunks)input[c.text]=spokenFrench(c.text);}}fs.writeFileSync(process.argv[2]||'/tmp/ecoute-static-speech.json',JSON.stringify(input));console.log('Exported '+Object.keys(input).length+' speech texts.');}finally{await server.close();}
