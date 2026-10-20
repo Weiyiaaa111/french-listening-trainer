@@ -1,0 +1,16 @@
+{
+  "status": "blocked_before_parameter_training",
+  "training_started": false,
+  "optimizer_steps": 0,
+  "checkpoint_produced": false,
+  "production_audio_changed": false,
+  "runtime": {"device": "cpu", "piper": "1.8.0", "torch": "2.14.1+cpu"},
+  "datasets": [
+    {"speaker": "Christophe Bourseiller", "candidate_clips": 11, "seconds": 75.32},
+    {"speaker": "Anthony Lantian", "candidate_clips": 5, "seconds": 34.16}
+  ],
+  "alignment_review": "automatic_unreviewed",
+  "verified": ["mono_pcm_22050Hz_clip_lengths", "french_phonemization", "spectrogram_cache", "first_training_batch", "training_cli_help"],
+  "blocker": "Hugging Face model repository request rejected by network proxy: 403 Forbidden",
+  "configuration": "Required model download domains saved as draft; runtime activation requires saving and publishing environment settings"
+}
