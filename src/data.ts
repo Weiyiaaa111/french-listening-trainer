@@ -1,8 +1,9 @@
+import type { ProsodyPart } from './prosody';
 import piste37 from './lessons/piste37.json';
 import {validTiming,type LongLesson} from './long-lesson';
 import { extraSeeds } from './extra-data';
 export type Module = 'c1' | 'engineering' | 'daily';
-export type Chunk = { text: string; role: string; tip: string; audioUrl?: string };
+export type Chunk = { text: string; role: string; tip: string; audioUrl?: string; prosody?: ProsodyPart[] };
 export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string; lesson?: LongLesson };
 const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip])=>({text,role,tip})),tags,sample:true});
 export const seeds: Exercise[] = [
@@ -28,6 +29,7 @@ export function mergeExercises(existing:Exercise[], input:unknown):{items:Exerci
  const e=v as Exercise;
  if(typeof e.id!=='string'||!e.id.trim()||!['c1','engineering','daily'].includes(e.module)||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(e.date)||Number.isNaN(Date.parse(e.date))||new Date(e.date).toISOString().slice(0,10)!==e.date||typeof e.title!=='string'||typeof e.translation!=='string'||typeof e.sample!=='boolean'||!Array.isArray(e.tags)||!e.tags.every(t=>typeof t==='string')||!Array.isArray(e.chunks)||!e.chunks.length||!validUrl(e.audioUrl)||!e.chunks.every(c=>c&&typeof c.text==='string'&&c.text.trim()&&typeof c.role==='string'&&typeof c.tip==='string'&&validUrl(c.audioUrl)))throw new Error('题目字段不完整或无效，请参照示例 JSON（音频需为 HTTP/HTTPS 地址）。');
  if(e.lesson!==undefined&&!validLesson(e.lesson))throw new Error('长篇原音题库的时间轴或意群数据无效。');
+ if(e.chunks.some(c=>c.prosody!==undefined&&(!Array.isArray(c.prosody)||!c.prosody.length||!c.prosody.every(p=>p&&typeof p.text==='string'&&typeof p.note==='string'&&['↗','↘','→'].includes(p.tone)))))throw new Error('语调标注格式无效。');
  const key=normalize(fullText(e)); if(!ids.has(e.id)&&!texts.has(key)){result.push(e);ids.add(e.id);texts.add(key);}
  }
  return {items:result,added:result.length-existing.length};

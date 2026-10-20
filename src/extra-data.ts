@@ -1,8 +1,9 @@
 import type { Exercise, Module } from './data';
+import {suggestProsody} from './prosody';
 type Row = [string,string,string];
-function lesson(id:string,module:Module,title:string,translation:string,rows:Row[],tags:string[]):Exercise{return {id,module,date:'2026-10-20',title,translation,chunks:rows.map(([text,role,tip])=>({text,role,tip})),tags,sample:true};}
+function lesson(id:string,module:Module,title:string,translation:string,rows:Row[],tags:string[]):Exercise{return {id,module,date:'2026-10-20',title,translation,chunks:rows.map(([text,role,tip])=>({text:text.replaceAll(' / ',' '),role,tip,prosody:suggestProsody(text)})),tags,sample:true};}
 export const extraSeeds:Exercise[]=[
-lesson('eng-meeting-long','engineering','长篇示例｜雨季施工协调会（12 句）','会议开场：本次会议主要讨论营地供水和设备进场。我们昨天要等到道路恢复通行后才能查看现场。监理希望开工前收到详细进度表。供应商曾答应周一送到的水泵仍未到场。我们暂时把它替换为租来的设备，但费用尚未获批。问题在于井的出水量低于预期。技术员将到现场再次测量，我们会请他提交书面报告。如果结果合格，营地后天就可以接通供水。不过，应先检查水质，再供厨房使用。至于人员，各班组负责人应确认明天到岗的人数。我尚未收到合同草案；承包商一发来，我就转给你们。最后，我们周五再开会，确定哪些已完成、哪些还需要处理。',[
+lesson('eng-meeting-long','engineering','长篇示例｜雨季施工协调会（20 句）','会议开场：本次会议主要讨论营地供水和设备进场。我们昨天要等到道路恢复通行后才能查看现场。监理希望开工前收到详细进度表。供应商曾答应周一送到的水泵仍未到场。我们暂时把它替换为租来的设备，但费用尚未获批。问题在于井的出水量低于预期。技术员将到现场再次测量，我们会请他提交书面报告。如果结果合格，营地后天就可以接通供水。不过，应先检查水质，再供厨房使用。至于人员，各班组负责人应确认明天到岗的人数。我尚未收到合同草案；承包商一发来，我就转给你们。结束前大家确认采购日程。供应商已发报价但未说明交货期，项目要求他书面确认以便安排卸货。营地负责人询问是否可以同时安装卫生设施，监理要求先批准图纸并签署场地接收记录。若夜间下雨，需要先检查排水沟。所有修改须写进纪要，口译员用法语和中文复述决定并请大家确认。最后，我们周五再开会，确定哪些已完成、哪些还需要处理。',[
 ['Bonjour à tous, cette réunion porte principalement sur l’alimentation en eau du camp et l’arrivée des engins.','会议开场','porter sur 表示涉及；两个名词组并列。'],
 ['Hier, nous ne pouvions pas accéder au site tant que la voie n’était pas remise en état.','未完成过去时 · 否定','ne pouvions pas 描述过去的限制；tant que 表示只要……还。'],
 ['Le contrôleur souhaite que nous lui transmettions un planning détaillé avant le démarrage des travaux.','lui · 虚拟式','souhaiter que + 虚拟式；lui 指监理。'],
@@ -14,9 +15,17 @@ lesson('eng-meeting-long','engineering','长篇示例｜雨季施工协调会（
 ['Il faudra toutefois vérifier la qualité de l’eau avant de l’utiliser pour la cuisine.','转折 · la','toutefois 表示不过；l’ 指 eau。'],
 ['En ce qui concerne le personnel, chaque chef d’équipe doit confirmer le nombre d’ouvriers qui seront présents demain.','话题引入 · qui','en ce qui concerne 表示至于；qui 是关系从句主语。'],
 ['Je n’ai pas encore reçu le projet de contrat ; dès que l’entrepreneur me l’enverra, je vous le transmettrai.','否定 · 双代词','me le 和 vous le 的顺序；dès que 后可用将来时。'],
+['Chef de chantier : Avant de nous quitter, / pouvons-nous confirmer le calendrier d’achat des matériaux ?','会议追问 · 确认式疑问','avant de 引出时间框架；倒装 pouvons-nous 用于提出请求。'],
+['Responsable des achats : Le fournisseur nous a envoyé un devis, / mais il manque encore le délai de livraison.','采购 · 转折','a envoyé 是完成事件；il manque 表示尚缺某项信息。'],
+['Chef de chantier : Demandez-lui de le préciser par écrit, / afin que nous puissions organiser le déchargement.','lui / le · 目的从句','lui 指供应商，le 指期限；afin que + 虚拟式 puissions。'],
+['Responsable du camp : Pendant que les travaux de forage avancent, / pouvons-nous commencer le montage des sanitaires ?','时间背景 · 请求','pendant que 引出同时进行的动作。'],
+['Contrôleur : Oui, à condition que les plans soient validés / et que le procès-verbal de réception du terrain soit signé.','条件 · 虚拟式','à condition que + 虚拟式；et que 并列第二个条件。'],
+['Chef de chantier : S’il pleut cette nuit, / nous vérifierons d’abord les fossés / pour éviter que l’eau n’entre dans les bâtiments.','si · 目的从句','si + 现在时，主句将来时；éviter que 后的 ne 可为赘词。'],
+['Responsable des achats : Les modifications dont nous venons de parler / seront ajoutées au compte rendu.','dont · 被动将来时','parler de → dont；seront ajoutées 与 modifications 配合。'],
+['Interprète : Pour éviter tout malentendu, / je vais reformuler les décisions en français et en chinois, / puis vous pourrez les confirmer.','口译确认 · les','reformuler 为重新表述；les 指 décisions。'],
 ['Enfin, nous nous réunirons vendredi pour faire le point sur ce qui a été réalisé et sur ce qui reste à régler.','总结 · 被动式','faire le point 表示盘点情况；a été réalisé 为复合过去时被动式。']
-],['长篇材料','监理会议','12 句']),
-lesson('c1-interview-long','c1','长篇示例｜公共交通与社会公平（12 句）','主持人询问公共交通免费是否能改变出行习惯。研究者认为，首先需要明确我们期待这一政策实现什么。如果目的是减少汽车出行，票价只是影响因素之一。以前一些居民开车，因为公交服务太少。他们真正要求的是可靠的班次和合理的通勤时间。然而，免费可以减轻低收入家庭的负担。这是支持该措施的协会经常提出的论点。他们还提醒我们，增加供给必须配合长期投入。记者追问，如何在不削减其他预算的前提下筹资。研究者回答，需要地方政府和国家层面的选择。尽管有些城市取得了进展，但很难把所有变化都归因于免费。因此，应同时评估使用率、服务质量和社会影响。',[
+],['长篇材料','监理会议','20 句']),
+lesson('c1-interview-long','c1','长篇示例｜公共交通与社会公平（20 句）','主持人询问公共交通免费是否能改变出行习惯。研究者认为，首先需要明确我们期待这一政策实现什么。如果目的是减少汽车出行，票价只是影响因素之一。以前一些居民开车，因为公交服务太少。他们真正要求的是可靠的班次和合理的通勤时间。然而，免费可以减轻低收入家庭的负担。这是支持该措施的协会经常提出的论点。他们还提醒我们，增加供给必须配合长期投入。记者追问，如何在不削减其他预算的前提下筹资。研究者回答，需要地方政府和国家层面的选择。尽管有些城市取得了进展，但很难把所有变化都归因于免费。记者追问如何判断偏远居民是否受益，研究者建议也调查很少乘车的人。面对调查费用的质疑，她强调没有可靠数据就无法衡量政策成果。在农村，如果公交无法连接卫生中心，免票本身不能解决问题。记者将建议概括为先明确需要再选择手段；研究者指出关键还在于人们能否真正获得基本服务。因此，应同时评估使用率、服务质量和社会影响。',[
 ['Journaliste : La gratuité des transports publics peut-elle vraiment modifier nos habitudes de déplacement ?','访谈提问','peut-elle：主谓倒装；修饰语 public 与 transports 配合。'],
 ['Chercheuse : Il faut d’abord préciser ce que l’on attend de cette politique.','ce que','attendre quelque chose de：期待某事；ce que 作 attend 的宾语。'],
 ['Si l’objectif est de réduire l’usage de la voiture, le prix du billet n’est qu’un facteur parmi d’autres.','限制式 ne…que','n’est qu’un 表示只是一个；parmi d’autres 表示诸多因素之一。'],
@@ -28,9 +37,17 @@ lesson('c1-interview-long','c1','长篇示例｜公共交通与社会公平（12
 ['Journaliste : Comment peut-on les financer sans réduire les budgets consacrés à d’autres services ?','les · sans + 不定式','les 指 investissements；consacrés à：用于……的。'],
 ['Chercheuse : Cela suppose des choix à la fois au niveau des collectivités et à celui de l’État.','并列结构','à la fois…et…：既……又……；celui 代替 niveau。'],
 ['Bien que certaines villes aient enregistré des progrès, il reste difficile de les attribuer entièrement à la gratuité.','让步 · 虚拟式过去时','bien que + aient enregistré；les 指 progrès。'],
+['Journaliste : Vous évoquez les effets sociaux ; / comment savoir si les habitants les plus isolés en bénéficient réellement ?','间接疑问 · en','en 指这项措施；savoir si 后为间接疑问。'],
+['Chercheuse : Il faut interroger les personnes qui utilisent peu les transports, / et pas seulement celles qui les prennent déjà chaque jour.','关系从句 · celles','celles 指 personnes；两类人群形成对比。'],
+['Journaliste : Certains élus disent que ces enquêtes coûtent trop cher, / alors que leur budget est déjà limité.','转述 · 对比','disent que 转述观点；alors que 引出背景限制。'],
+['Chercheuse : Pourtant, sans données fiables, / on risque de financer une politique / dont on ne peut pas mesurer les résultats.','转折 · dont','mesurer les résultats de cette politique → dont。'],
+['Journaliste : Et dans les zones rurales, / où les bus passent rarement, / la gratuité peut-elle suffire ?','地点从句 · 疑问','où 指 zones rurales；完整听出主句 peut-elle suffire。'],
+['Chercheuse : Non, si aucun service ne permet de rejoindre un centre de santé, / supprimer le prix du billet ne résout pas le problème.','否定 · 不定式主语','aucun…ne 否定；supprimer… 整体作主语。'],
+['Journaliste : Autrement dit, / vous recommandez de définir les besoins / avant de choisir les moyens ?','总结改述 · 确认','autrement dit 表示换言之；用确认式问题检验理解。'],
+['Chercheuse : Exactement ; / ce qui compte, ce n’est pas seulement le nombre de voyages supplémentaires, / c’est aussi l’accès réel aux services essentiels.','ce qui · 强调结构','ce qui 作 compte 的主语；pas seulement…aussi… 扩展论证。'],
 ['Il convient donc d’évaluer ensemble la fréquentation, la qualité du service et les effets sociaux de la mesure.','论证结论','il convient de：应当；donc 引出结论。']
-],['长篇材料','社会议题','12 句']),
-lesson('daily-dialogue-long','daily','长篇示例｜送货、付款与改约（12 句）','客户打电话询问昨天已确认的送货。供应商解释卡车在路上出了故障。客户提醒，工地在等这些材料，需要知道何时收到。供应商可以先送一部分，其余明天送。客户同意，但要求提前收到司机电话。供应商表示，拿到后会发给他。客户说还没收到修改后的发票。供应商说会请同事重发。客户希望租赁费用单独列明，以便会计核对。供应商会注明金额和使用期限。客户说确认后会发付款证明。最后双方约定，若卡车出发前再有问题就互相联系。',[
+],['长篇材料','社会议题','20 句']),
+lesson('daily-dialogue-long','daily','长篇示例｜送货、付款与改约（20 句）','客户打电话询问昨天已确认的送货。供应商解释卡车在路上出了故障。客户提醒，工地在等这些材料，需要知道何时收到。供应商可以先送一部分，其余明天送。客户同意，但要求提前收到司机电话。供应商表示，拿到后会发给他。客户说还没收到修改后的发票。供应商说会请同事重发。客户希望租赁费用单独列明，以便会计核对。供应商会注明金额和使用期限。客户说确认后会发付款证明。客户进一步提出顺延租期，供应商说明设备已被另一工地预订。客户强调设备尚未使用，不希望支付额外天数。供应商答应向负责人沟通，客户将立即发送准确日期，并要求下午四点前回复。双方确认库管会在现场接货，司机须提前半小时打电话，卸货前先核对。最后双方约定，若卡车出发前再有问题就互相联系。',[
 ['Client : Bonjour, je vous appelle au sujet de la livraison que nous avions confirmée hier.','通话开场 · 愈过去时','au sujet de：关于；avions confirmée 表示此前已确认。'],
 ['Fournisseur : Je suis désolé, le camion est tombé en panne en cours de route.','复合过去时','tomber en panne：发生故障；en cours de route：途中。'],
 ['Client : Le chantier attend ces matériaux, et nous avons besoin de savoir quand nous les recevrons.','les · 间接疑问句','les 指 matériaux；quand 引导间接疑问。'],
@@ -42,8 +59,16 @@ lesson('daily-dialogue-long','daily','长篇示例｜送货、付款与改约（
 ['Client : Pourriez-vous y faire apparaître les frais de location séparément afin que notre comptable puisse les vérifier ?','y · 虚拟式','y 指在发票上；afin que + puisse 表示目的。'],
 ['Fournisseur : Bien sûr, nous y préciserons le montant et la durée d’utilisation.','y · 将来时','préciser：明确说明；y 仍指发票上。'],
 ['Client : Une fois les informations confirmées, je vous enverrai le justificatif de paiement.','时间状语','une fois + 过去分词：一经……；enverrai 是将来时。'],
+['Client : Puisque nous devons modifier la livraison, / serait-il possible de décaler aussi la fin de la location ?','原因 · 礼貌请求','puisque 引出共同已知原因；serait-il possible 为委婉表达。'],
+['Fournisseur : Je dois en parler au responsable, / car le matériel est déjà réservé pour un autre chantier.','en · 原因','en parler 指谈这件事；car 解释限制。'],
+['Client : Je comprends, / mais nous ne l’avons pas encore utilisé / et nous ne voudrions pas payer des jours supplémentaires.','否定 · 条件式','l’ 指 matériel；voudrions 让协商语气更委婉。'],
+['Fournisseur : Dans ce cas, / envoyez-moi les dates exactes / et je lui demanderai ce qu’il peut proposer.','lui · 间接疑问','lui 指负责人；ce que 作 proposer 的宾语。'],
+['Client : Je vous les envoie tout de suite ; / pourriez-vous me répondre avant seize heures ?','双代词 · 时间要求','vous les 的顺序；seize heures 是下午四点。'],
+['Fournisseur : Oui, je vais m’en occuper ; / en attendant, pouvez-vous confirmer que quelqu’un sera présent pour réceptionner la commande ?','en · 宾语从句','s’occuper de → s’en occuper；en attendant 表示在此期间。'],
+['Client : Le magasinier sera sur place, / mais il faudra l’appeler une demi-heure avant l’arrivée du camion.','人员安排 · le','l’ 指 magasinier；avant + 名词表示时间先后。'],
+['Fournisseur : C’est noté ; / je transmettrai son numéro au chauffeur / et je lui rappellerai de ne rien décharger sans vérification.','lui · 否定不定式','lui 指司机；ne rien 放在不定式 décharger 之前。'],
 ['Fournisseur : Très bien, nous nous recontacterons si un problème survient avant le départ du camion.','条件句','si + 现在时 survient，主句用将来时。']
-],['长篇材料','生活对话','12 句']),
+],['长篇材料','生活对话','20 句']),
 lesson('eng-5','engineering','营地选址：排水风险','我们考察过的地块看起来合适，但应先检查雨季时雨水是否容易排走。',[
 ['Le terrain que nous avons visité semble convenir,','关系从句','que 代指 terrain，作 visité 的宾语。'],['mais il faut d’abord vérifier','转折 · 必要性','il faut + 不定式。'],['si l’eau de pluie s’y évacue facilement pendant la saison des pluies.','y · 间接疑问','si 表示是否；y 指这块地。']],['营地建设','y']),
 lesson('eng-6','engineering','设备进场：证件核对','在允许卡车进入之前，请检查司机是否带齐监理要求的证件。',[
