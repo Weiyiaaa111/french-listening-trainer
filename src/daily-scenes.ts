@@ -1,7 +1,7 @@
 import type {Exercise} from './data';
 import {suggestProsody} from './prosody';
 type Line=[string,string,string];
-function scene(id:string,title:string,rows:Line[]):Exercise{return {id,module:'daily',format:'passage',date:'2026-10-20',title:`场景示例｜${title}（8 句）`,sample:true,tags:['完整对话','日常示例'],translation:rows.map(r=>r[1]).join(' '),chunks:rows.map(([text,zh,note],i)=>({text:text.replaceAll(' / ',' '),role:`第 ${i+1} 句`,tip:`${zh} ${note}`,prosody:suggestProsody(text)}))};}
+function scene(id:string,title:string,rows:Line[]):Exercise{return {id,module:'daily',format:'passage',date:'2026-10-20',title:`场景示例｜${title}（8 句）`,sample:true,tags:['完整对话','日常示例'],translation:rows.map(r=>r[1]).join(' '),chunks:rows.map(([text,zh,note],i)=>({text:text.replaceAll(' / ',' '),role:`第 ${i+1} 句`,translation:zh,tip:`${zh} ${note}`,prosody:suggestProsody(text)}))};}
 export const dailyScenes:Exercise[]=[
 scene('daily-rent-scene','和房东确认租金与维修',[
 ['Bonjour, je vous appelle au sujet du loyer / et de la fuite que nous vous avons signalée hier.','您好，我想问一下房租，以及我们昨天向您反映的漏水。','que 作 signalée 的宾语。'],

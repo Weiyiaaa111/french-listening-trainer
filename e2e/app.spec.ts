@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 test('盲听、听写、意群解析和持久化',async({page})=>{
  await page.goto('/?lesson=eng-1');await expect(page.getByText('Ce que le contrôleur nous a expliqué hier,',{exact:true})).toHaveCount(0);
  await page.getByRole('button',{name:'开始听辨'}).click();await page.getByLabel('听写与意群划分').fill('Ce que / les engins');await page.getByRole('button',{name:'记录本次听写'}).click();await expect(page.getByRole('status')).toContainText('已保存');
- await page.getByRole('button',{name:'查看原文与解析'}).click();await expect(page.getByText('昨天监理告诉我们的情况是，设备只有在通道修复以后才能进场。',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'查看原文与解析'}).click();await expect(page.getByText('昨天监理向我们解释的内容，',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'收藏到错题'}).click();await page.reload();await expect(page.getByRole('button',{name:'取消错题收藏'})).toBeVisible();await expect(page.locator('.stats').first()).toContainText('1');
  await page.getByRole('button',{name:/错题与复习/}).click();await expect(page.locator('.lesson')).toHaveCount(1);
  await page.getByRole('button',{name:'开始听辨'}).click();await page.getByRole('button',{name:'查看原文与解析'}).click();await page.getByRole('button',{name:'标记已掌握'}).click();await expect(page.getByText('没有待复习句子。',{exact:false})).toBeVisible();

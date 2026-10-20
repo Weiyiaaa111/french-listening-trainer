@@ -4,9 +4,19 @@ import piste37 from './lessons/piste37.json';
 import {validTiming,type LongLesson} from './long-lesson';
 import { extraSeeds } from './extra-data';
 export type Module = 'c1' | 'engineering' | 'daily';
-export type Chunk = { text: string; role: string; tip: string; audioUrl?: string; prosody?: ProsodyPart[] };
-export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string; lesson?: LongLesson; format?: 'passage'|'single' };
-const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip])=>({text,role,tip})),tags,sample:true});
+export type Chunk = { text: string; role: string; tip: string; translation?: string; audioUrl?: string; prosody?: ProsodyPart[] };
+export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string; lesson?: LongLesson; format?: 'passage'|'single'; notes?: string };
+const shortTranslations:Record<string,string[]>={
+ 'eng-1':['昨天监理向我们解释的内容，','是设备不能进入工地，','要等通道修复之后才可以。'],
+ 'eng-2':['如果钻井队明天到达，','我们会请该团队检查出水量，','在营地安装完成之前。'],
+ 'eng-3':['我们需要的挖掘机昨天还不可用；','所以我向供应商提出要求，','请他给我们提供另一台。'],
+ 'eng-4':['我们等待水泥送到的时候，','工地负责人召集了工人们，','并向他们说明了新的安排。'],
+ 'c1-1':['这场讨论所揭示的情况，','是居民们不愿放弃汽车，','除非有一个可靠的替代方案。'],
+ 'c1-2':['虽然这项措施帮助到了一些家庭，','它仍不足以减少不平等，','这正是协会们所批评的。'],
+ 'daily-1':['你给我的那些文件，','我把它们放在办公室了；','你今天下午去那里的话，可以把它们取回来。'],
+ 'daily-2':['我还没有收到发票。','你一收到，能把它发给我吗？','我需要它来确认订单。']
+};
+const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip],i)=>({text,role,tip,translation:shortTranslations[id]?.[i]})),tags,sample:true});
 export const seeds: Exercise[] = [
 {id:'piste37-complot',module:'c1',date:'2026-10-20',title:'真人原音｜阴谋论访谈 · 4 分钟',translation:'根据你提供的 France Inter 访谈音频与文稿，逐句精听、识别论证结构。',chunks:piste37.sentences.map(s=>({text:s.text,role:s.section,tip:s.speaker})),tags:['真人原音','35 句','语调建议'],sample:false,audioUrl:piste37.audioUrl,lesson:piste37 as unknown as LongLesson},
 ...extraSeeds,
@@ -29,7 +39,8 @@ export function mergeExercises(existing:Exercise[], input:unknown):{items:Exerci
  for(const v of input){
  if(!v||typeof v!=='object')throw new Error('题目格式不正确。');
  const e=v as Exercise;
- if(typeof e.id!=='string'||!e.id.trim()||!['c1','engineering','daily'].includes(e.module)||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(e.date)||Number.isNaN(Date.parse(e.date))||new Date(e.date).toISOString().slice(0,10)!==e.date||typeof e.title!=='string'||typeof e.translation!=='string'||typeof e.sample!=='boolean'||!Array.isArray(e.tags)||!e.tags.every(t=>typeof t==='string')||!Array.isArray(e.chunks)||!e.chunks.length||!validUrl(e.audioUrl)||!e.chunks.every(c=>c&&typeof c.text==='string'&&c.text.trim()&&typeof c.role==='string'&&typeof c.tip==='string'&&validUrl(c.audioUrl)))throw new Error('题目字段不完整或无效，请参照示例 JSON（音频需为 HTTP/HTTPS 地址）。');
+ if(typeof e.id!=='string'||!e.id.trim()||!['c1','engineering','daily'].includes(e.module)||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(e.date)||Number.isNaN(Date.parse(e.date))||new Date(e.date).toISOString().slice(0,10)!==e.date||typeof e.title!=='string'||typeof e.translation!=='string'||typeof e.sample!=='boolean'||!Array.isArray(e.tags)||!e.tags.every(t=>typeof t==='string')||!Array.isArray(e.chunks)||!e.chunks.length||!validUrl(e.audioUrl)||!e.chunks.every(c=>c&&typeof c.text==='string'&&c.text.trim()&&typeof c.role==='string'&&typeof c.tip==='string'&&(c.translation===undefined||typeof c.translation==='string')&&validUrl(c.audioUrl)))throw new Error('题目字段不完整或无效，请参照示例 JSON（音频需为 HTTP/HTTPS 地址）。');
+ if(e.notes!==undefined&&typeof e.notes!=='string')throw new Error('备注格式无效。');
  if(e.format!==undefined&&!['passage','single'].includes(e.format))throw new Error('材料类型无效。');
  if(e.lesson!==undefined&&!validLesson(e.lesson))throw new Error('长篇原音题库的时间轴或意群数据无效。');
  if(e.chunks.some(c=>c.prosody!==undefined&&(!Array.isArray(c.prosody)||!c.prosody.length||!c.prosody.every(p=>p&&typeof p.text==='string'&&typeof p.note==='string'&&['↗','↘','→'].includes(p.tone)))))throw new Error('语调标注格式无效。');
