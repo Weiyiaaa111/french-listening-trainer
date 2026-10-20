@@ -1,8 +1,10 @@
+import { extraSeeds } from './extra-data';
 export type Module = 'c1' | 'engineering' | 'daily';
 export type Chunk = { text: string; role: string; tip: string; audioUrl?: string };
 export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string };
 const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip])=>({text,role,tip})),tags,sample:true});
 export const seeds: Exercise[] = [
+...extraSeeds,
 make('eng-1','engineering','2026-10-20','协调设备进场','昨天监理告诉我们的情况是，设备只有在通道修复以后才能进场。',[["Ce que le contrôleur nous a expliqué hier,","宾语关系从句 · 复合过去时","ce que 引导名词性从句，作 expliquer 的宾语；nous 是间接宾语。"],["c’est que les engins ne pourront entrer sur le chantier","否定式 · 简单将来时","ne…que 与后面的 après 组合，表示只有……之后才……。"],["qu’après la remise en état de la voie d’accès.","时间限制","qu’après 连读；remise en état 指恢复原状、修复。"]],['ce que','否定式','复合过去时']),
 make('eng-2','engineering','2026-10-20','监理会议：供水安排','如果钻井队明天到了，我们会请他们在营地安装之前检查水量。',[["Si l’équipe de forage arrive demain,","条件从句","si + 现在时，主句用将来时。"],["nous lui demanderons de vérifier le débit","间接宾语代词 lui","lui 指代 l’équipe，demander à quelqu’un de faire。"],["avant que le camp ne soit installé.","时间从句 · 虚拟式","avant que + 虚拟式；这里的 ne 是赘词，不表示否定。"]],['lui','从句','供水']),
 make('eng-3','engineering','2026-10-19','租赁与合同','我们需要的那台挖掘机昨天还不可用，所以我请供应商给我们提供另一台。',[["La pelle dont nous avions besoin n’était pas disponible hier ;","dont · 未完成过去时","avoir besoin de → dont；était 描述过去的状态。"],["j’ai donc demandé au fournisseur","复合过去时 · 逻辑连接","donc 表示因此，j’ai demandé 是已完成的动作。"],["de nous en proposer une autre.","代词 en","en 代替 une pelle，une autre 保留数量含义。"]],['dont','en','未完成过去时']),
