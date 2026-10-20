@@ -5,7 +5,17 @@ export const toneNames:Record<Tone,string>={'↗':'上扬','↘':'下沉','→':
 export function suggestProsody(text:string, ending?:Tone):ProsodyPart[]{
  const speakerless=spokenFrench(text);
  const raw=speakerless.includes(' / ')?speakerless.split(' / '):speakerless.split(/(?<=[,;:!?。])\s+(?!»)/u);
- const parts=raw.map(s=>s.trim()).filter(Boolean);
+ // Split clear subordinate/logic links when a sentence has no written pause.
+ // Keep explicit user boundaries and short expressions intact.
+ const splitLinks=(part:string):string[]=>{
+  const link=/\s+(?=(?:ce qu[’']|ce que\b|ce qui\b|parce que\b|alors que\b|pour que\b|afin de\b|mais\b|dont\b))/giu;
+  for(const match of part.matchAll(link)){
+   const left=part.slice(0,match.index).trim(),right=part.slice(match.index+match[0].length).trim();
+   if(left.split(/\s+/).length>=3&&right.split(/\s+/).length>=3)return [left,...splitLinks(right)];
+  }
+  return [part];
+ };
+ const parts=raw.map(s=>s.trim()).filter(Boolean).flatMap(part=>speakerless.includes(' / ')?[part]:splitLinks(part));
  return parts.map((part,i)=>{
   let tone:Tone='→';
   if(i===parts.length-1){tone=ending||(/\?\s*[»”]?$/.test(part)&&! /^(Quels?|Quelles?|Pourquoi|Comment|Quand|Où|Combien)\b/i.test(speakerless)?'↗':'↘');}

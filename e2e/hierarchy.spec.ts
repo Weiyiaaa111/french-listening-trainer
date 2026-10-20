@@ -1,0 +1,26 @@
+import {test,expect} from '@playwright/test';
+for(const lesson of ['eng-meeting-long','piste37-complot'])test(`${lesson} 三部分层级与就地解析开关`,async({page})=>{
+ await page.goto('/?lesson='+lesson);
+ await expect(page.getByRole('button',{name:'查看当前解析',exact:true})).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'查看当前句解析',exact:true})).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'查看原文与解析',exact:true})).toHaveCount(0);
+ await expect(page.getByText('跟读整句（可选）',{exact:true})).toHaveCount(0);
+ const start=page.getByRole('button',{name:'开始听音辨写',exact:true});
+ await expect(start.locator('xpath=ancestor::section[1]')).toContainText('01');
+ await expect(start.locator('..')).toHaveCSS('justify-content','flex-end');
+ await start.click();
+ const real=lesson==='piste37-complot';
+ await page.getByRole('button',{name:real?'播放原音第 29 句':'盲听片段 08',exact:true}).click();
+ const sentenceToggle=page.getByRole('button',{name:'查看本句解析',exact:true});
+ await sentenceToggle.click();const analysis=page.getByRole('region',{name:'当前句解析'});await expect(analysis).toBeVisible();await expect(analysis).toContainText('听辨重点');
+ await page.getByRole('button',{name:'收起本句解析',exact:true}).click();await expect(analysis).toHaveCount(0);
+ const bank=page.getByRole('region',{name:'意群选择与跟读'});
+ expect(await bank.getByRole('button',{name:/选择意群/}).count()).toBeGreaterThan(1);
+ await bank.getByRole('button',{name:'选择意群 2',exact:true}).click();
+ await bank.getByRole('button',{name:'查看本意群解析',exact:true}).click();const chunk=bank.getByRole('region',{name:'本意群解析'});await expect(chunk).toContainText('听辨重点');
+ await bank.getByRole('button',{name:'收起本意群解析',exact:true}).click();await expect(chunk).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'开始本句录音',exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'03 听写与复述笔记'})).toBeVisible();
+ await page.getByRole('button',{name:real?'播放原音第 30 句':'盲听片段 09',exact:true}).click();await expect(chunk).toHaveCount(0);await expect(analysis).toHaveCount(0);
+ await page.screenshot({path:`test-results/${lesson}-hierarchy.png`,fullPage:true});
+});

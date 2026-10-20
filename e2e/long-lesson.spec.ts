@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 import lesson from '../src/lessons/piste37.json' with {type:'json'};
-async function open(page:import('@playwright/test').Page){await page.goto('/');await page.getByRole('button',{name:'DALF C1',exact:true}).click();await page.locator('.lesson').filter({hasText:'真人原音｜阴谋论访谈'}).click();await page.getByRole('button',{name:'开始跟读听辨',exact:true}).click();}
+async function open(page:import('@playwright/test').Page){await page.goto('/');await page.getByRole('button',{name:'DALF C1',exact:true}).click();await page.locator('.lesson').filter({hasText:'真人原音｜阴谋论访谈'}).click();await page.getByRole('button',{name:'开始听音辨写',exact:true}).click();}
 test('上传原音具有真实时长，逐句和意群播放使用同一个原音',async({page})=>{
  await open(page);const audio=page.getByLabel('完整真人原音');await expect.poll(()=>audio.evaluate((a:HTMLAudioElement)=>a.duration)).toBeGreaterThan(240);
  await expect(page.getByRole('button',{name:/播放原音第 \d+ 句/})).toHaveCount(35);

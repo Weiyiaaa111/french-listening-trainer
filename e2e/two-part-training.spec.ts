@@ -4,7 +4,7 @@ for(const lesson of ['eng-meeting-long','piste37-complot'])test(`${lesson} 两�
  if(lesson==='piste37-complot')await page.setViewportSize({width:390,height:844});await microphone(page);await page.goto('/?lesson='+lesson);
  await expect(page.getByRole('button',{name:'开始录音',exact:true})).toBeVisible();
  await expect(page.getByRole('region',{name:'意群选择与跟读'})).toBeHidden();
- await page.getByRole('button',{name:'开始跟读听辨',exact:true}).click();
+ await page.getByRole('button',{name:'开始听音辨写',exact:true}).click();
  if(lesson==='eng-meeting-long')await page.getByRole('button',{name:'盲听片段 08',exact:true}).click();
  const bank=page.getByRole('region',{name:'意群选择与跟读'});
  await expect(bank.getByRole('button',{name:'开始本意群录音',exact:true})).toHaveCount(0);
@@ -22,4 +22,4 @@ for(const lesson of ['eng-meeting-long','piste37-complot'])test(`${lesson} 两�
  await expect(page.getByRole('button',{name:'开始录音',exact:true})).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.screenshot({path:`test-results/${lesson}-two-parts.png`,fullPage:true});
 });
 
-test('短句专项同样在录音下单独展开听辨重点',async({page})=>{await page.goto('/?lesson=eng-1');await page.getByRole('button',{name:'开始跟读听辨',exact:true}).click();await page.getByRole('button',{name:'盲听片段 01',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toHaveCount(0);await page.getByRole('button',{name:'查看本意群解析',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toContainText('ce qui / ce que');await page.getByRole('button',{name:'盲听片段 02',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toHaveCount(0);});
+test('短句专项同样在录音下单独展开听辨重点',async({page})=>{await page.goto('/?lesson=eng-1');await page.getByRole('button',{name:'开始听音辨写',exact:true}).click();await page.getByRole('button',{name:'盲听片段 01',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toHaveCount(0);await page.getByRole('button',{name:'查看本意群解析',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toContainText('ce qui / ce que');await page.getByRole('button',{name:'盲听片段 02',exact:true}).click();await expect(page.getByRole('region',{name:'本意群解析'})).toHaveCount(0);});
