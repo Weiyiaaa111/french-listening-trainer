@@ -1,0 +1,6 @@
+Basic French fallback uses unmodified espeak-ng npm package 1.0.2 (GPL-3.0-or-later), running as a separate speech CLI in a Web Worker.
+Distribution and source/build instructions: https://github.com/ianmarmour/espeak-ng.js
+Engine source: https://github.com/espeak-ng/espeak-ng
+Exact package: https://registry.npmjs.org/espeak-ng/-/espeak-ng-1.0.2.tgz
+License: espeak-ng-license.txt in this directory.
+No custom voice model is trained or distributed.

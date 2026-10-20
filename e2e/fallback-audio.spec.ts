@@ -1,0 +1,3 @@
+import {test,expect} from '@playwright/test';
+import {openDetail} from './helpers';
+test('没有系统法语声音时实际生成WAV并播放',async({page})=>{test.setTimeout(60000);await page.addInitScript(()=>{speechSynthesis.getVoices=()=>[];const Native=Audio;(window as any).Audio=function(url:string){const a=new Native(url);(window as any).lastAudio=a;return a;};});await openDetail(page,'eng-1');await page.getByRole('button',{name:'播放意群 1',exact:true}).click();await expect.poll(()=>page.evaluate(()=>(window as any).lastAudio?.currentTime||0),{timeout:45000}).toBeGreaterThan(0);expect(await page.evaluate(()=>(window as any).lastAudio.duration)).toBeGreaterThan(.5);await expect(page.getByRole('alert')).toHaveCount(0);await expect(page.getByText('当前设备未提供法语声音',{exact:false})).toBeVisible();});

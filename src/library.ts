@@ -1,0 +1,3 @@
+import {mergeExercises,seeds,type Exercise} from './data';
+export function validDeletedIds(value:unknown):string[]{if(value===undefined)return [];if(!Array.isArray(value)||!value.every(id=>typeof id==='string'))throw new Error('已删除材料记录无效');return [...new Set(value)];}
+export function restoreLibrary(input:unknown,deletedIds:string[]):Exercise[]{const saved=mergeExercises([],input).items,removed=new Set(deletedIds),byId=new Map(saved.map(e=>[e.id,e]));const builtins=seeds.filter(e=>!removed.has(e.id)).map(e=>({...e,module:byId.get(e.id)?.module||e.module}));return mergeExercises(builtins,saved.filter(e=>!removed.has(e.id))).items;}
