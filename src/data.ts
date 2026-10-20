@@ -1,14 +1,16 @@
+import {dailyScenes} from './daily-scenes';
 import type { ProsodyPart } from './prosody';
 import piste37 from './lessons/piste37.json';
 import {validTiming,type LongLesson} from './long-lesson';
 import { extraSeeds } from './extra-data';
 export type Module = 'c1' | 'engineering' | 'daily';
 export type Chunk = { text: string; role: string; tip: string; audioUrl?: string; prosody?: ProsodyPart[] };
-export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string; lesson?: LongLesson };
+export type Exercise = { id: string; module: Module; date: string; title: string; translation: string; chunks: Chunk[]; tags: string[]; sample: boolean; audioUrl?: string; lesson?: LongLesson; format?: 'passage'|'single' };
 const make = (id:string,module:Module,date:string,title:string,translation:string,chunks:[string,string,string][],tags:string[]):Exercise => ({id,module,date,title,translation,chunks:chunks.map(([text,role,tip])=>({text,role,tip})),tags,sample:true});
 export const seeds: Exercise[] = [
 {id:'piste37-complot',module:'c1',date:'2026-10-20',title:'真人原音｜阴谋论访谈 · 4 分钟',translation:'根据你提供的 France Inter 访谈音频与文稿，逐句精听、识别论证结构。',chunks:piste37.sentences.map(s=>({text:s.text,role:s.section,tip:s.speaker})),tags:['真人原音','35 句','语调建议'],sample:false,audioUrl:piste37.audioUrl,lesson:piste37 as unknown as LongLesson},
 ...extraSeeds,
+...dailyScenes,
 make('eng-1','engineering','2026-10-20','协调设备进场','昨天监理告诉我们的情况是，设备只有在通道修复以后才能进场。',[["Ce que le contrôleur nous a expliqué hier,","宾语关系从句 · 复合过去时","ce que 引导名词性从句，作 expliquer 的宾语；nous 是间接宾语。"],["c’est que les engins ne pourront entrer sur le chantier","否定式 · 简单将来时","ne…que 与后面的 après 组合，表示只有……之后才……。"],["qu’après la remise en état de la voie d’accès.","时间限制","qu’après 连读；remise en état 指恢复原状、修复。"]],['ce que','否定式','复合过去时']),
 make('eng-2','engineering','2026-10-20','监理会议：供水安排','如果钻井队明天到了，我们会请他们在营地安装之前检查水量。',[["Si l’équipe de forage arrive demain,","条件从句","si + 现在时，主句用将来时。"],["nous lui demanderons de vérifier le débit","间接宾语代词 lui","lui 指代 l’équipe，demander à quelqu’un de faire。"],["avant que le camp ne soit installé.","时间从句 · 虚拟式","avant que + 虚拟式；这里的 ne 是赘词，不表示否定。"]],['lui','从句','供水']),
 make('eng-3','engineering','2026-10-19','租赁与合同','我们需要的那台挖掘机昨天还不可用，所以我请供应商给我们提供另一台。',[["La pelle dont nous avions besoin n’était pas disponible hier ;","dont · 未完成过去时","avoir besoin de → dont；était 描述过去的状态。"],["j’ai donc demandé au fournisseur","复合过去时 · 逻辑连接","donc 表示因此，j’ai demandé 是已完成的动作。"],["de nous en proposer une autre.","代词 en","en 代替 une pelle，une autre 保留数量含义。"]],['dont','en','未完成过去时']),
@@ -28,6 +30,7 @@ export function mergeExercises(existing:Exercise[], input:unknown):{items:Exerci
  if(!v||typeof v!=='object')throw new Error('题目格式不正确。');
  const e=v as Exercise;
  if(typeof e.id!=='string'||!e.id.trim()||!['c1','engineering','daily'].includes(e.module)||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(e.date)||Number.isNaN(Date.parse(e.date))||new Date(e.date).toISOString().slice(0,10)!==e.date||typeof e.title!=='string'||typeof e.translation!=='string'||typeof e.sample!=='boolean'||!Array.isArray(e.tags)||!e.tags.every(t=>typeof t==='string')||!Array.isArray(e.chunks)||!e.chunks.length||!validUrl(e.audioUrl)||!e.chunks.every(c=>c&&typeof c.text==='string'&&c.text.trim()&&typeof c.role==='string'&&typeof c.tip==='string'&&validUrl(c.audioUrl)))throw new Error('题目字段不完整或无效，请参照示例 JSON（音频需为 HTTP/HTTPS 地址）。');
+ if(e.format!==undefined&&!['passage','single'].includes(e.format))throw new Error('材料类型无效。');
  if(e.lesson!==undefined&&!validLesson(e.lesson))throw new Error('长篇原音题库的时间轴或意群数据无效。');
  if(e.chunks.some(c=>c.prosody!==undefined&&(!Array.isArray(c.prosody)||!c.prosody.length||!c.prosody.every(p=>p&&typeof p.text==='string'&&typeof p.note==='string'&&['↗','↘','→'].includes(p.tone)))))throw new Error('语调标注格式无效。');
  const key=normalize(fullText(e)); if(!ids.has(e.id)&&!texts.has(key)){result.push(e);ids.add(e.id);texts.add(key);}
@@ -39,3 +42,5 @@ function validLesson(l:LongLesson){
  if(!l||typeof l!=='object'||!['title','source','audioUrl','transcriptNote','intonationNote'].every(k=>typeof l[k as keyof LongLesson]==='string')||!(l.duration>0)||!Number.isFinite(l.duration)||!(/^(https?:\/\/|\.\/audio\/[a-zA-Z0-9_-]+\.(mp3|m4a|ogg|wav)$)/.test(l.audioUrl))||!Array.isArray(l.sentences)||!l.sentences.length)return false;
  return l.sentences.every((s,i)=>s&&validTiming(s.start,s.end,l.duration)&&(!i||s.start>=l.sentences[i-1].end)&&['speaker','section','text','translation'].every(k=>typeof s[k as keyof typeof s]==='string')&&Array.isArray(s.chunks)&&s.chunks.length&&s.chunks.every((c,j)=>c&&validTiming(c.start,c.end,l.duration)&&c.start>=s.start&&c.end<=s.end&&(!j||c.start>=s.chunks[j-1].end)&&['text','translation','role','tip'].every(k=>typeof c[k as keyof typeof c]==='string')&&['↗','↘','→'].includes(c.tone)));
 }
+
+export const isPassage = (e:Exercise) => e.format==='passage'||!!e.lesson||(e.format!=='single'&&e.chunks.length>=8);
