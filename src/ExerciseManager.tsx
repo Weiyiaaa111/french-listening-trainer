@@ -1,0 +1,3 @@
+import type {Exercise,Module} from './data';
+export const moduleNames:Record<Module,string>={c1:'DALF C1',engineering:'工程法语',daily:'日常法语'};
+export default function ExerciseManager({exercise:e,onMove,onDelete}:{exercise:Exercise;onMove:(id:string,m:Module)=>void;onDelete:(id:string)=>void}){return <div className="exercise-manager" aria-label={`管理材料：${e.title}`}><label>所属模块<select aria-label={`调整模块：${e.title}`} value={e.module} onChange={ev=>onMove(e.id,ev.target.value as Module)}>{Object.entries(moduleNames).map(([id,name])=><option key={id} value={id}>{name}</option>)}</select></label><button className="text-button delete-material" onClick={()=>onDelete(e.id)}>删除这份练习</button></div>;}
