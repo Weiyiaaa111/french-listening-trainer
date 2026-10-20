@@ -3,7 +3,7 @@ export type ProsodyPart = {text:string;tone:Tone;note:string};
 export const toneNames:Record<Tone,string>={'↗':'上扬','↘':'下沉','→':'延续'};
 // Teaching suggestions from syntax, never an acoustic analysis of the recording.
 export function suggestProsody(text:string, ending?:Tone):ProsodyPart[]{
- const speakerless=text.replace(/^(Journaliste|Chercheuse|Client|Fournisseur)\s*:\s*/u,'');
+ const speakerless=spokenFrench(text);
  const raw=speakerless.includes(' / ')?speakerless.split(' / '):speakerless.split(/(?<=[,;:!?。])\s+(?!»)/u);
  const parts=raw.map(s=>s.trim()).filter(Boolean);
  return parts.map((part,i)=>{
