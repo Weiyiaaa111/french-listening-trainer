@@ -59,9 +59,40 @@ export function buildReviewQuestions(sentences:TrainingSentence[]):ReviewQuestio
  const entry=entries.find(e=>e.term===q.term)!;const form=(entry.forms||[entry.term]).find(f=>contains(q.context.text,f));
  if(form){const at=fold(q.context.text).indexOf(fold(form));const actual=q.context.text.slice(at,at+form.length);result.push({...q,id:q.id+'-cloze',direction:'cloze',prompt:'原句空缺处用了哪个词或表达？',context:{...q.context,text:q.context.text.slice(0,at)+'____'+q.context.text.slice(at+form.length)},options:mix([actual,...mix(other.filter(v=>fold(v)!==fold(actual)),i+29).slice(0,3)],i+43),answer:actual});}
  return result;
- });
+ }).concat(grammarQuestions(sentences));
  // Unknown imported text: test source recognition rather than invent a translation.
  return sentences.slice(0,3).flatMap((context,i)=>{const words=context.text.trim().split(/\s+/);if(words.length<2)return [];const term=words.slice(-2).join(' ');return [{id:'context-'+i,kind:'表达' as const,term,prompt:'原句空缺处用了哪个表达？',options:mix([term,'en attendant','bien sûr','en revanche'].filter((v,i,a)=>a.indexOf(v)===i),i+3),answer:term,context:{...context,text:words.slice(0,-2).join(' ')+' ____'},audio:context}];});
 }
-export function orderingQuestions(sentences:TrainingSentence[]){return sentences.filter(s=>s.chunks.length>1&&s.chunks.length<=8).slice(0,12);}
+// These are reconstruction tiles, not claims about natural prosodic boundaries.
+function grammarQuestions(sentences:TrainingSentence[]):ReviewQuestion[]{
+ const families=[['peux','peut','pouvons','pouvez','peuvent','pouvais','pouvions','pourrons','pourriez'],['dois','doit','devons','devez','doivent','devait','devions','devra','devraient'],['ai','as','a','avons','avez','ont','avait','avaient','aura'],['est','sont','était','étaient','sera','seront','serait'],['faut','fallait','faudra','faudrait']];
+ return sentences.flatMap((context,i)=>{const matches=[...context.text.matchAll(/\b[\p{L}]+\b/gu)];const m=matches.find(m=>families.some(f=>f.includes(m[0].toLocaleLowerCase('fr'))));if(!m)return [];const actual=m[0],family=families.find(f=>f.includes(actual.toLocaleLowerCase('fr')))!;const at=m.index!;return [{id:'grammar-'+i,kind:'表达' as const,term:actual,direction:'cloze' as const,prompt:'听原句，结合主语和时间线索，选择实际使用的动词形式。',options:mix([actual,...mix(family.filter(v=>v!==actual.toLocaleLowerCase('fr')),i+91).slice(0,3)],i+22),answer:actual,context:{...context,text:context.text.slice(0,at)+'____'+context.text.slice(at+actual.length)},audio:context}];}).slice(0,12);
+}
+export function orderingQuestions(sentences:TrainingSentence[]):TrainingSentence[]{
+ return sentences.flatMap(s=>{
+ const words=s.text.trim().split(/\s+/);if(words.length<7||words.length>55)return [];
+ const size=Math.max(1,Math.ceil(words.length/9));const chunks:Unit[]=[];
+ for(let i=0;i<words.length;i+=size)chunks.push({text:words.slice(i,i+size).join(' '),role:'排序片段',tip:''});
+ return chunks.length>=4?[{...s,chunks}]:[];
+ }).slice(0,12);
+}
+export type ListeningGap={id:string;before:string;after:string;answer:string;focus:string;audio:TrainingSentence};
+export function listeningGaps(sentences:TrainingSentence[]):ListeningGap[]{
+ return sentences.flatMap((s,i)=>{
+ const patterns:[RegExp,string][]=[
+ [/\b(?:ai|as|a|avons|avez|ont|est|sont|était|étaient|avait|avaient|sera|seront|serait|seraient)\s+(?:été\s+)?[\p{L}’'-]+/iu,'动词结构与时态'],
+ [/\b(?:ne|n[’'])\s*[^,;.!?]{1,45}?\b(?:pas|plus|jamais)\b/iu,'否定结构'],
+ [/\b(?:pourriez|voudrais|pourrons|devons|pouvions|pourront|faudra|faut|souhaiterais|devrait)\b/iu,'动词变位'],
+ [/\b(?:ce qui|ce que|ce qu[’']|dont|lui|leur|en|y)\b/iu,'代词与从句'],
+ ];
+ let match:RegExpMatchArray|null=null,focus='词组与搭配';for(const [re,label] of patterns){match=s.text.match(re);if(match){focus=label;break;}}
+ if(!match){const q=buildReviewQuestions([s]).find(q=>q.direction==='cloze');if(q){const entry=entries.find(e=>e.term===q.term)!;const form=(entry.forms||[entry.term]).find(f=>contains(s.text,f))!;const at=fold(s.text).indexOf(fold(form));return [{id:'gap-'+i,before:s.text.slice(0,at),after:s.text.slice(at+form.length),answer:s.text.slice(at,at+form.length),focus,audio:s}];}
+ const words=[...s.text.matchAll(/[\p{L}][\p{L}’'-]*/gu)];const word=words.find(w=>w[0].length>=6);if(!word)return [];match=word;}
+ const at=match.index!;return [{id:'gap-'+i,before:s.text.slice(0,at),after:s.text.slice(at+match[0].length),answer:match[0],focus,audio:s}];
+ }).slice(0,16);
+}
+export function checkListeningGap(input:string,answer:string){
+ const normalize=(v:string)=>v.normalize('NFC').toLocaleLowerCase('fr').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().replace(/[.!?,;:]+$/,'');
+ return normalize(input)===normalize(answer);
+}
 export function shuffledIndices(length:number,seed:number){const result=mix(Array.from({length},(_,i)=>i),seed);return result.every((v,i)=>v===i)?result.slice(1).concat(result[0]):result;}
