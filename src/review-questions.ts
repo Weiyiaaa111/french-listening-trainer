@@ -93,7 +93,11 @@ export function listeningGaps(sentences:TrainingSentence[]):ListeningGap[]{
   const tokens=[...s.text.matchAll(/[\p{L}][\p{L}’'-]*/gu)];
   const limit=tokens.length>=16?5:tokens.length>=10?4:tokens.length>=5?3:1;
   const selected:typeof candidates=[];let hidden=0;
-  for(const c of candidates.sort((a,b)=>a.priority-b.priority||a.start-b.start||b.end-a.end)){
+  // A phrase is a targeting hint; every resulting answer is one written word.
+  // Resolve against original token spans so punctuation stays visible and an
+  // elided/hyphenated word is never cut in the middle.
+  const wordCandidates=candidates.flatMap(c=>tokens.filter(t=>t.index!>=c.start&&t.index!+t[0].length<=c.end).map(t=>({...c,start:t.index!,end:t.index!+t[0].length})));
+  for(const c of wordCandidates.sort((a,b)=>a.priority-b.priority||a.start-b.start||b.end-a.end)){
    if(selected.length>=limit)break;
    if(selected.some(v=>c.start<v.end&&c.end>v.start))continue;
    const count=tokens.filter(t=>t.index!>=c.start&&t.index!<c.end).length;
