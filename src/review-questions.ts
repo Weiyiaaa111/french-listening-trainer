@@ -81,7 +81,7 @@ export function listeningGaps(sentences:TrainingSentence[]):ListeningGap[]{
  return sentences.slice(0,50).flatMap((s,si)=>{
   const candidates:{start:number;end:number;focus:string;priority:number}[]=[];
   function add(pattern:RegExp,focus:string,priority:number){for(const m of s.text.matchAll(pattern)){const start=m.index!;candidates.push({start,end:start+m[0].length,focus,priority});}}
-  add(/(?<![\p{L}])(?:ai|as|a|avons|avez|ont|est|sont|était|étaient|avait|avaient|sera|seront)\s+(?:été\s+)?(?:[\p{L}]+(?:é|ée|és|ées)|fait|dit|pris|reçu|eu|été|mis|vu|venu|venue|venus|venues)(?![\p{L}])/giu,'助动词与过去分词',0);
+  add(/(?<![\p{L}])(?:[jlmtsnc][’'])?(?:ai|as|a|avons|avez|ont|suis|es|est|sommes|êtes|sont|étais|était|étions|étiez|étaient|avais|avait|avions|aviez|avaient|serai|seras|sera|serons|serez|seront|aurai|auras|aura|aurons|aurez|auront)\s+(?:été\s+)?(?:[\p{L}]+(?:é|ée|és|ées)|fait|dit|pris|reçu|eu|été|mis|mise|mises|vu|vue|vus|vues|lu|lue|lus|lues|écrit|écrite|compris|appris|attendu|finis?|venu|venue|venus|venues)(?![\p{L}])/giu,'助动词与过去分词',0);
   add(/(?<![\p{L}])(?:pourriez|voudrais|pourrons|devons|pouvions|pourront|faudra|faut|souhaiterais|devrait|pouvez|peut|pouvons|peuvent|devons|doivent|sera|seront|était|étaient|avions|avait|avaient)(?![\p{L}])/giu,'动词变位与时态',1);
   for(const entry of entries)for(const form of entry.forms||[entry.term]){
    const at=fold(s.text).indexOf(fold(form));if(at>=0&&contains(s.text,form))candidates.push({start:at,end:at+form.length,focus:entry.kind==='单词'?'关键词':'词组与搭配',priority:entry.kind==='单词'?3:1});
@@ -93,10 +93,9 @@ export function listeningGaps(sentences:TrainingSentence[]):ListeningGap[]{
   const tokens=[...s.text.matchAll(/[\p{L}][\p{L}’'-]*/gu)];
   const limit=tokens.length>=16?5:tokens.length>=10?4:tokens.length>=5?3:1;
   const selected:typeof candidates=[];let hidden=0;
-  // A phrase is a targeting hint; every resulting answer is one written word.
-  // Resolve against original token spans so punctuation stays visible and an
-  // elided/hyphenated word is never cut in the middle.
-  const wordCandidates=candidates.flatMap(c=>tokens.filter(t=>t.index!>=c.start&&t.index!+t[0].length<=c.end).map(t=>({...c,start:t.index!,end:t.index!+t[0].length})));
+  // Keep compound tenses intact; other phrase targets become written words.
+  // Apostrophes and hyphens remain attached to the word in the source.
+  const wordCandidates=candidates.flatMap(c=>c.priority===0?[c]:tokens.filter(t=>t.index!>=c.start&&t.index!+t[0].length<=c.end).map(t=>({...c,start:t.index!,end:t.index!+t[0].length})));
   for(const c of wordCandidates.sort((a,b)=>a.priority-b.priority||a.start-b.start||b.end-a.end)){
    if(selected.length>=limit)break;
    if(selected.some(v=>c.start<v.end&&c.end>v.start))continue;
