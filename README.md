@@ -100,3 +100,5 @@ python scripts/generate-neural-audio.py --input /tmp/ecoute-static-speech.json -
 模型来源：https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models 。模型数据及署名见 public/notices/siwis-model-card.txt。未调用收费服务，没有利用用户的访谈素材训练或克隆这个声音。普通安装、构建、部署不需要重新生成示例音频。
 
 习题更新：表达排序使用至少 4 个更细的重组片段（并非自然语音停顿标注），增加同一动词不同变位的听辨选择，以及最多 16 道听音填空。填空保留重音要求，忽略大小写、多余空格和直弯撇号差异，支持核对后修改；结果随本轮记录保存。
+
+解析更新：整篇与意群解析展示匹配到的具体句型、搭配和近义辨析，未覆盖内容明确提示。每个意群标题旁提供解析开关与跟读入口，解析和录音在该卡片内展开；切句后录音仍在本题内保留。

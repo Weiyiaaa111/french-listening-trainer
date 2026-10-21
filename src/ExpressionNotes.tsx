@@ -1,0 +1,31 @@
+type Note={kind:string;term:string;detail:string};
+const rules:[RegExp,string,string,string][]=[
+ [/\b(?:renvoie|renvoyer|envoyer|enverrai)\b/i,'搭配','envoyer quelque chose à quelqu’un / le lui renvoyer','envoyer 是发送，renvoyer 可表示再次发送或退回。je vous la renvoie 中 vous 是接收者，la 回指阴性单数的文件等对象。'],
+ [/\b(?:facture|reçu)\b/i,'搭配','recevoir une facture / régler une facture','收到发票 / 支付账单。avez-vous reçu… 使用复合过去时，询问截至现在是否已收到。'],
+ [/\b(?:appelle|appeler)\b/i,'句型','appeler quelqu’un / appeler pour + infinitif','给某人打电话；appeler pour confirmer = 打电话确认。je vous appelle 中 vous 是直接宾语。'],
+ [/\b(?:besoin|précision)\b/i,'搭配','avoir besoin de + nom / infinitif','需要某物或做某事。j’aurais besoin de… 用条件式缓和请求；une précision 指一项补充说明。'],
+ [/\bprécision\b/i,'近义辨析','une précision / une explication','précision 是把细节说准确；explication 是解释原因或含义，不能处处互换。'],
+ [/\bparce qu[’e]|\bpuisque\b/i,'句型','parce que + proposition / puisque + proposition','都引出原因；parce que 回答“为什么”，puisque 常把双方已知的原因作为前提。'],
+ [/\bfaire le point\b/i,'搭配','faire le point sur + nom','梳理、核对某事的进展；与 faire un bilan（作总结评估）意思接近，前者侧重当前情况。'],
+ [/\b(?:s[’']occuper|m[’']en occupe)\b/i,'搭配','s’occuper de / prendre en charge','都可表示负责；prendre en charge 更强调承担处理责任或费用。s’en occuper 的 en 替代 de + 事项。'],
+ [/\bau sujet\b/i,'近义表达','au sujet de / à propos de / concernant','均可引出“关于……”；concernant 较适合正式书面沟通。au sujet de + le → au sujet du。'],
+ [/\b(?:confirmer|confirmation|confirme)\b/i,'搭配','confirmer une date / confirmer que…','确认日期；确认某事。vérifier 是先核查是否正确，confirmer 是确认结果或安排。'],
+ [/\bdélai/i,'近义辨析','un délai / une date limite','délai 指期限或所需时间；date limite 指截止日期。dans un délai de trois jours = 在三天内。'],
+ [/\bmettre en place|\bmise en place\b/i,'搭配','mettre en place + dispositif / organisation','建立制度、落实安排；installer 更偏向安装设备，不能在所有语境中互换。'],
+ [/\bremise en état\b/i,'搭配','remettre en état / la remise en état de','修复、恢复可用状态；réparer 侧重修理损坏，remettre en état 可覆盖整体恢复。'],
+ [/\bimportance\b/i,'搭配','accorder de l’importance à + nom','重视……；accorder une grande importance à = 十分重视。à 后面接所重视的事情。'],
+ [/\bce qu[’e]|\bce qui\b/i,'句型','ce qui + verbe / ce que + sujet + verbe','ce qui 作从句主语：ce qui compte；ce que 作宾语：ce que vous demandez。'],
+ [/\bdont\b/i,'句型','le matériel dont nous avons besoin','dont 承接 de：avoir besoin de ce matériel → le matériel dont nous avons besoin。'],
+ [/\b(?:pourriez|voudrais|faudrait)\b/i,'句型','pourriez-vous + infinitif / je voudrais + infinitif','条件式用于委婉请求或愿望；pourriez-vous préciser… 比 pouvez-vous préciser… 更委婉。'],
+ [/\ben attendant\b/i,'搭配','en attendant / en attendant de + infinitif','前者是“在此期间”；后者是“在等待做某事期间”。en attendant la livraison = 在等待交货期间。'],
+ [/\b(?:livraison|livrer)\b/i,'搭配','livrer du matériel / réceptionner une livraison','livrer 是送货；réceptionner 是接收、验收来货。délai de livraison = 交货期。'],
+ [/\b(?:réunion|compte rendu)\b/i,'搭配','tenir une réunion / rédiger un compte rendu','召开会议 / 撰写会议纪要。compte rendu 记录发生的事项；ordre du jour 列出会前议题。'],
+ [/\b(?:loyer|logement)\b/i,'搭配','payer le loyer / louer un logement','支付租金 / 租住房屋。loyer 指租金，location 指租赁行为或租赁安排。'],
+ [/\b(?:vérité|complot)\b/i,'搭配','une théorie du complot / établir la vérité','阴谋论 / 查明真相。une preuve 是证据，une conviction 是确信，二者不能等同。'],
+ [/\b(?:lui|leur)\b/i,'句型','expliquer quelque chose à quelqu’un → lui expliquer','lui / leur 替代 à + 人；例如 je leur explique la situation。与直接宾语 le / la / les 区别。'],
+ [/\b(?:ne|n[’'])[^.!?]*\bpas\b/i,'句型','ne + verbe conjugué + pas','复合时态中否定包住助动词：nous n’avons pas reçu；不把 pas 放在过去分词之后。'],
+ [/\btant que\b/i,'句型','tant que + proposition','表示“只要 / 在……期间一直”；tant que… ne… pas 常表示“直到……之前一直不……”。'],
+ [/\b(?:bonjour|merci)\b/i,'表达','bonjour / merci','bonjour 用于打招呼；merci de + nom 或 merci de + infinitif 用于致谢，例如 merci de votre aide。'],
+];
+export function expressionNotes(text:string):Note[]{return rules.filter(([re])=>re.test(text)).slice(0,5).map(([,kind,term,detail])=>({kind,term,detail}));}
+export default function ExpressionNotes({text}:{text:string}){const notes=expressionNotes(text);return <div className="expression-notes">{notes.length?<ul>{notes.map(n=><li key={n.term}><span className="small-label">{n.kind}</span> <b>{n.term}</b><p>{n.detail}</p></li>)}</ul>:<p className="muted">此片段暂未匹配到已校对的句型或搭配解析。</p>}</div>;}
