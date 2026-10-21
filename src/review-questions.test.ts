@@ -1,7 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {seeds} from './data';
 import {trainingSentences} from './training-model';
-import {buildReviewQuestions,shuffledIndices,orderingQuestions,listeningGaps,checkListeningGap} from './review-questions';
+import {buildReviewQuestions,shuffledIndices,orderingQuestions,listeningGaps,groupListeningGaps,checkListeningGap} from './review-questions';
 describe('词汇、词组与表达复习出题',()=>{
  it('只从当前材料匹配词条，选项唯一且包含标准含义',()=>{const q=buildReviewQuestions(trainingSentences(seeds.find(e=>e.id==='eng-1')!));expect(q.some(q=>q.term==='remise en état')).toBe(true);expect(new Set(q.map(q=>q.kind)).size).toBe(3);expect(q.some(q=>q.term==='facture')).toBe(false);for(const item of q){expect(item.options.filter(o=>o===item.answer)).toHaveLength(1);expect(new Set(item.options).size).toBe(item.options.length);if(item.direction!=='cloze')expect(item.context.text).toContain(item.audio.text);}});
  it('一份材料生成更多不同练法而非只出几题',()=>{const q=buildReviewQuestions(trainingSentences(seeds.find(e=>e.id==='eng-1')!));expect(q.length).toBeGreaterThanOrEqual(18);expect(new Set(q.map(q=>q.direction))).toEqual(new Set(['meaning','recall','cloze']));});
@@ -14,3 +14,5 @@ describe('细分排序和听音填空',()=>{
  it('长句不再成为两个悬殊的选项，片段无丢失且不改听力意群',()=>{for(const seed of seeds){const sentences=trainingSentences(seed),before=JSON.stringify(sentences);for(const q of orderingQuestions(sentences)){expect(q.chunks.length).toBeGreaterThanOrEqual(4);expect(q.chunks.map(c=>c.text).join(' ')).toBe(q.text.trim().replace(/\s+/g,' '));expect(Math.max(...q.chunks.map(c=>c.text.split(/\s+/).length))).toBeLessThanOrEqual(7);}expect(JSON.stringify(sentences)).toBe(before);}});
  it('填空准确还原来源，考动词且核对重音、空格和撇号',()=>{const gaps=listeningGaps(trainingSentences(seeds.find(e=>e.id==='eng-meeting-long')!));expect(gaps.length).toBeGreaterThan(3);expect(gaps.some(g=>g.focus.includes('动词'))).toBe(true);for(const g of gaps)expect(g.before+g.answer+g.after).toBe(g.audio.text);expect(checkListeningGap("  J’AI   ÉTÉ ","j'ai été")).toBe(true);expect(checkListeningGap('ete','été')).toBe(false);expect(checkListeningGap('avait','a')).toBe(false);});
 });
+
+it('每句提供多个不重叠的填空并保留可读语境，覆盖长材料后半段',()=>{const sentences=trainingSentences(seeds.find(e=>e.id==='eng-meeting-long')!),gaps=listeningGaps(sentences),groups=groupListeningGaps(gaps);expect(groups.length).toBe(20);expect(gaps.length).toBeGreaterThanOrEqual(50);expect(groups.every(g=>g.indices.length>=2&&g.indices.length<=5)).toBe(true);for(const g of groups){let rebuilt=g.segments[0];g.indices.forEach((i,j)=>{rebuilt+=gaps[i].answer+g.segments[j+1];});expect(rebuilt).toBe(g.audio.text);const starts=g.indices.map(i=>gaps[i].before.length);expect(new Set(starts).size).toBe(starts.length);}});

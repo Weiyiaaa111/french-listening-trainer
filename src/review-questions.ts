@@ -78,18 +78,36 @@ export function orderingQuestions(sentences:TrainingSentence[]):TrainingSentence
 }
 export type ListeningGap={id:string;before:string;after:string;answer:string;focus:string;audio:TrainingSentence};
 export function listeningGaps(sentences:TrainingSentence[]):ListeningGap[]{
- return sentences.flatMap((s,i)=>{
- const patterns:[RegExp,string][]=[
- [/\b(?:ai|as|a|avons|avez|ont|est|sont|était|étaient|avait|avaient|sera|seront|serait|seraient)\s+(?:été\s+)?[\p{L}’'-]+/iu,'动词结构与时态'],
- [/\b(?:ne|n[’'])\s*[^,;.!?]{1,45}?\b(?:pas|plus|jamais)\b/iu,'否定结构'],
- [/\b(?:pourriez|voudrais|pourrons|devons|pouvions|pourront|faudra|faut|souhaiterais|devrait)\b/iu,'动词变位'],
- [/\b(?:ce qui|ce que|ce qu[’']|dont|lui|leur|en|y)\b/iu,'代词与从句'],
- ];
- let match:RegExpMatchArray|null=null,focus='词组与搭配';for(const [re,label] of patterns){match=s.text.match(re);if(match){focus=label;break;}}
- if(!match){const q=buildReviewQuestions([s]).find(q=>q.direction==='cloze');if(q){const entry=entries.find(e=>e.term===q.term)!;const form=(entry.forms||[entry.term]).find(f=>contains(s.text,f))!;const at=fold(s.text).indexOf(fold(form));return [{id:'gap-'+i,before:s.text.slice(0,at),after:s.text.slice(at+form.length),answer:s.text.slice(at,at+form.length),focus,audio:s}];}
- const words=[...s.text.matchAll(/[\p{L}][\p{L}’'-]*/gu)];const word=words.find(w=>w[0].length>=6);if(!word)return [];match=word;}
- const at=match.index!;return [{id:'gap-'+i,before:s.text.slice(0,at),after:s.text.slice(at+match[0].length),answer:match[0],focus,audio:s}];
- }).slice(0,16);
+ return sentences.slice(0,50).flatMap((s,si)=>{
+  const candidates:{start:number;end:number;focus:string;priority:number}[]=[];
+  function add(pattern:RegExp,focus:string,priority:number){for(const m of s.text.matchAll(pattern)){const start=m.index!;candidates.push({start,end:start+m[0].length,focus,priority});}}
+  add(/(?<![\p{L}])(?:ai|as|a|avons|avez|ont|est|sont|était|étaient|avait|avaient|sera|seront)\s+(?:été\s+)?(?:[\p{L}]+(?:é|ée|és|ées)|fait|dit|pris|reçu|eu|été|mis|vu|venu|venue|venus|venues)(?![\p{L}])/giu,'助动词与过去分词',0);
+  add(/(?<![\p{L}])(?:pourriez|voudrais|pourrons|devons|pouvions|pourront|faudra|faut|souhaiterais|devrait|pouvez|peut|pouvons|peuvent|devons|doivent|sera|seront|était|étaient|avions|avait|avaient)(?![\p{L}])/giu,'动词变位与时态',1);
+  for(const entry of entries)for(const form of entry.forms||[entry.term]){
+   const at=fold(s.text).indexOf(fold(form));if(at>=0&&contains(s.text,form))candidates.push({start:at,end:at+form.length,focus:entry.kind==='单词'?'关键词':'词组与搭配',priority:entry.kind==='单词'?3:1});
+  }
+  add(/(?<![\p{L}])(?:ce qui|ce que|ce qu[’']|dont|lui|leur|en|y|nous|vous|les)(?![\p{L}])/giu,'代词与从句',2);
+  add(/(?<![\p{L}])(?:pas|plus|jamais|rien|sans)(?![\p{L}])/giu,'否定表达',2);
+  // Unknown vocabulary can still be practised by listening, without inventing meanings.
+  add(/[\p{L}][\p{L}’'-]{4,}/gu,'关键词听辨',4);
+  const tokens=[...s.text.matchAll(/[\p{L}][\p{L}’'-]*/gu)];
+  const limit=tokens.length>=16?5:tokens.length>=10?4:tokens.length>=5?3:1;
+  const selected:typeof candidates=[];let hidden=0;
+  for(const c of candidates.sort((a,b)=>a.priority-b.priority||a.start-b.start||b.end-a.end)){
+   if(selected.length>=limit)break;
+   if(selected.some(v=>c.start<v.end&&c.end>v.start))continue;
+   const count=tokens.filter(t=>t.index!>=c.start&&t.index!<c.end).length;
+   if(hidden+count>Math.max(1,Math.floor(tokens.length*.6)))continue;
+   selected.push(c);hidden+=count;
+  }
+  return selected.sort((a,b)=>a.start-b.start).map((c,i)=>({id:`gap-${si}-${i}`,before:s.text.slice(0,c.start),after:s.text.slice(c.end),answer:s.text.slice(c.start,c.end),focus:c.focus,audio:s}));
+ });
+}
+export function groupListeningGaps(gaps:ListeningGap[]){
+ const groups:{audio:TrainingSentence;indices:number[];segments:string[]}[]=[];
+ gaps.forEach((g,i)=>{let group=groups.find(q=>q.audio===g.audio);if(!group){group={audio:g.audio,indices:[],segments:[]};groups.push(group);}group.indices.push(i);});
+ for(const group of groups){let cursor=0;for(const i of group.indices){const g=gaps[i];group.segments.push(group.audio.text.slice(cursor,g.before.length));cursor=g.before.length+g.answer.length;}group.segments.push(group.audio.text.slice(cursor));}
+ return groups;
 }
 export function checkListeningGap(input:string,answer:string){
  const normalize=(v:string)=>v.normalize('NFC').toLocaleLowerCase('fr').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim().replace(/[.!?,;:]+$/,'');
