@@ -5,6 +5,7 @@ import { seeds, mergeExercises, isPassage, type Exercise, type Module } from './
 import QuickAddForm from './QuickAddForm';
 import LessonTrainer from './LessonTrainer';
 import ExerciseManager from './ExerciseManager';
+import {enrichExercise} from './auto-study';
 import {restoreLibrary,validDeletedIds} from './library';
 import './style.css';
 type Progress = Record<string,{star:boolean;mastered:boolean;attempts:number;last:string;answer?:string}>;
@@ -26,7 +27,7 @@ function App(){
  useEffect(()=>{try{localStorage.setItem(storeKey,JSON.stringify({items,progress,deletedIds}));setStorageError('');}catch{setStorageError('浏览器存储失败，记录暂未保存。请导出备份，并检查存储空间或隐私设置。');}},[items,progress,deletedIds]);
  function update(patch:Partial<Progress[string]>){if(!exercise)return;setProgress(old=>({...old,[exercise.id]:{...(old[exercise.id]||{star:false,mastered:false,attempts:0,last:''}),...patch}}));}
  function openPaste(){setMessage('');setShowData(false);setShowPaste(true);}
- function addExercise(e:Exercise){const merged=mergeExercises(items,[e]);setItems(merged.items);setMessage(merged.added?'已添加 1 份练习。关闭窗口即可开始训练；建议再导出备份。':'这份法语内容已经存在，未重复添加。');if(merged.added){setModule(e.module);setDate('all');setView('learn');setSelected(e.id);}}
+ function addExercise(input:Exercise){const e=enrichExercise(input);const merged=mergeExercises(items,[e]);setItems(merged.items);setMessage(merged.added?'已添加 1 份练习。关闭窗口即可开始训练；建议再导出备份。':'这份法语内容已经存在，未重复添加。');if(merged.added){setModule(e.module);setDate('all');setView('learn');setSelected(e.id);}}
  function moveExercise(id:string,target:Module){const found=items.find(e=>e.id===id);if(!found)return;setItems(old=>old.map(e=>e.id===id?{...e,module:target}:e));setModule(target);setDate('all');setSelected(id);setView('learn');setLibraryNotice(`已调整「${found.title}」的模块，学习记录保留。`);}
  function deleteExercise(id:string){const found=items.find(e=>e.id===id);if(!found)return;setDeleted({exercise:found,progress:progress[id]});setDeletedIds(old=>[...new Set([...old,id])]);setItems(old=>old.filter(e=>e.id!==id));setProgress(old=>Object.fromEntries(Object.entries(old).filter(([key])=>key!==id)));setLibraryNotice(`已删除「${found.title}」。可撤销本次删除。`);}
  function undoDelete(){if(!deleted)return;const result=mergeExercises(items,[deleted.exercise]);if(result.added){setDeletedIds(old=>old.filter(id=>id!==deleted.exercise.id));setItems(result.items);if(deleted.progress)setProgress(old=>({...old,[deleted.exercise.id]:deleted.progress!}));setModule(deleted.exercise.module);setDate('all');setView('learn');setSelected(deleted.exercise.id);setLibraryNotice('已恢复这份材料及原有学习记录。');}else setLibraryNotice('相同材料已经存在，未重复恢复。');setDeleted(null);}

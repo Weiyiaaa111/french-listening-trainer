@@ -1,0 +1,14 @@
+French neural example voice attribution
+
+Voice: Piper fr_FR-siwis-medium (pretrained VITS model), distributed by the sherpa-onnx project.
+Piper: https://github.com/rhasspy/piper
+Model distribution: https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
+Dataset: SIWIS French speech synthesis database and its contributors
+Dataset source and attribution: https://datashare.is.ed.ac.uk/handle/10283/2353
+Dataset license stated in the model card: Creative Commons Attribution 4.0 International
+License: https://creativecommons.org/licenses/by/4.0/
+The original model card is available as siwis-model-card.txt in this directory.
+
+Audio processing performed here: inference from authored sample text, peak normalization, MP3 encoding.
+The files are synthetic audio, not recordings by the model's original speaker of these dialogues.
+No custom fine-tuning or voice cloning was performed. User-uploaded France Inter audio was not used to train this voice.
