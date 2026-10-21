@@ -1,5 +1,9 @@
 type Note={kind:string;term:string;detail:string};
 const rules:[RegExp,string,string,string][]=[
+ [/\b(?:laissent|laisser)\b/i,'句型','laisser + personne + infinitif','laisser quelqu’un passer = 让某人通过；ils ne nous laissent pas passer = 他们不让我们通过。nous 是 laisser 的宾语，passer 保持不定式。'],
+ [/qu[’']est-ce qu[’']on peut faire/i,'句型','Qu’est-ce qu’on peut faire ? / Que peut-on faire ?','两者都表示“我们能怎么办？”前者常用于口语，后者较正式。on 在此指我们；peut 后接不定式 faire。'],
+ [/pourquoi on ne peut pas passer/i,'句型','Pourquoi on ne peut pas passer ?','口语语序，表示“为什么我们不能通过？”较中性的完整问法是 Pourquoi est-ce qu’on ne peut pas passer ?；peut 是 pouvoir 的现在时。'],
+ [/\b(?:présenter|montrer)\b/i,'近义辨析','présenter un document / montrer un document','présenter 偏向正式出示材料；montrer 是给人看。vous la montrer 的 vous 是接收者，la 回指确认材料。'],
  [/\b(?:renvoie|renvoyer|envoyer|enverrai)\b/i,'搭配','envoyer quelque chose à quelqu’un / le lui renvoyer','envoyer 是发送，renvoyer 可表示再次发送或退回。je vous la renvoie 中 vous 是接收者，la 回指阴性单数的文件等对象。'],
  [/\b(?:facture|reçu)\b/i,'搭配','recevoir une facture / régler une facture','收到发票 / 支付账单。avez-vous reçu… 使用复合过去时，询问截至现在是否已收到。'],
  [/\b(?:appelle|appeler)\b/i,'句型','appeler quelqu’un / appeler pour + infinitif','给某人打电话；appeler pour confirmer = 打电话确认。je vous appelle 中 vous 是直接宾语。'],
@@ -23,7 +27,7 @@ const rules:[RegExp,string,string,string][]=[
  [/\b(?:loyer|logement)\b/i,'搭配','payer le loyer / louer un logement','支付租金 / 租住房屋。loyer 指租金，location 指租赁行为或租赁安排。'],
  [/\b(?:vérité|complot)\b/i,'搭配','une théorie du complot / établir la vérité','阴谋论 / 查明真相。une preuve 是证据，une conviction 是确信，二者不能等同。'],
  [/\b(?:lui|leur)\b/i,'句型','expliquer quelque chose à quelqu’un → lui expliquer','lui / leur 替代 à + 人；例如 je leur explique la situation。与直接宾语 le / la / les 区别。'],
- [/\b(?:ne|n[’'])[^.!?]*\bpas\b/i,'句型','ne + verbe conjugué + pas','复合时态中否定包住助动词：nous n’avons pas reçu；不把 pas 放在过去分词之后。'],
+ [/\b(?:ne|n[’'])[^.!?]*\bpas\b/i,'句型','ne + verbe conjugué + pas','否定包住变位动词：ils ne nous laissent pas passer；口语常省略 ne。复合过去时则包住助动词：nous n’avons pas reçu。'],
  [/\btant que\b/i,'句型','tant que + proposition','表示“只要 / 在……期间一直”；tant que… ne… pas 常表示“直到……之前一直不……”。'],
  [/\b(?:bonjour|merci)\b/i,'表达','bonjour / merci','bonjour 用于打招呼；merci de + nom 或 merci de + infinitif 用于致谢，例如 merci de votre aide。'],
 ];

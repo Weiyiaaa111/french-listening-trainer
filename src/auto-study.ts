@@ -1,7 +1,8 @@
-import type {Exercise} from './data';
+import {seeds,type Exercise} from './data';
+import {checkpointScene,isCheckpointInput,checkpointTranslations,textKey} from './airport-checkpoint';
 import {listeningNotes} from './ListeningNotes';
 import {buildReviewQuestions} from './review-questions';
-import {suggestProsody} from './prosody';
+import {spokenFrench,suggestProsody} from './prosody';
 import {trainingSentences} from './training-model';
 export function automaticAnalysis(text:string){
  const grammar=listeningNotes(text).map(n=>`${n.term}：${n.note}`);
@@ -17,7 +18,15 @@ export function automaticAnalysis(text:string){
  const terms=buildReviewQuestions([{text,role:'',tip:'',chunks:[{text,role:'',tip:''}]}]).filter(q=>q.meaning&&q.direction==='meaning'&&!grammar.some(g=>g.toLocaleLowerCase().includes(q.term.toLocaleLowerCase()))).slice(0,3).map(q=>`${q.term}：${q.meaning}`);
  return [...new Set([...grammar,...terms])].join('\n')||'当前未匹配到可靠词义或句型。可先按标出的停顿跟读；这部分仍需补充人工解析。';
 }
-export function enrichExercise(e:Exercise):Exercise{return {...e,chunks:e.chunks.map(c=>({...c,tip:(!c.tip||/未单独提供|语调为朗读建议|未经过人工校对/.test(c.tip))?automaticAnalysis(c.text):c.tip,role:/^第 \d+ 句|意群 \d+$/.test(c.role)?(listeningNotes(c.text)[0]?.term||'句子结构与表达'):c.role}))};}
+export function knownTranslation(text:string):string|undefined{
+ const key=textKey(spokenFrench(text)),direct=checkpointTranslations.get(key);if(direct)return direct;
+ for(const seed of seeds){for(const c of seed.chunks)if(textKey(spokenFrench(c.text))===key&&c.translation&&!/暂未|未提供/.test(c.translation))return c.translation;}
+ return undefined;
+}
+export function enrichExercise(e:Exercise):Exercise{
+ const chunks=e.chunks.map(c=>({...c,translation:c.translation&&!/暂未|未提供/.test(c.translation)?c.translation:knownTranslation(c.text),tip:(!c.tip||/未单独提供|语调为朗读建议|未经过人工校对/.test(c.tip))?automaticAnalysis(c.text):c.tip,role:/^第 \d+ 句|意群 \d+$/.test(c.role)?(listeningNotes(c.text)[0]?.term||'句子结构与表达'):c.role}));
+ return {...e,chunks,translation:(!e.translation||/暂未|未提供/.test(e.translation))&&chunks.every(c=>c.translation)?chunks.map(c=>c.translation).join(' '):e.translation};
+}
 const scenes=[
  {re:/loyer|logement|appartement|propriétaire|chambre/i,opening:['Bonjour, je vous appelle au sujet du logement. Est-ce que vous avez un moment ?','您好，我想就住房的事和您确认一下，现在方便吗？'],question:['Oui, bien sûr. Vous avez une question sur le paiement ou sur l’appartement ?','当然。您想问付款还是房子方面的问题？'],reply:['Je vais vérifier les conditions du contrat et vous envoyer une confirmation écrite.','我会核对合同条款，再发给您书面确认。']},
  {re:/aéroport|avion|vol\b|bagage|valise/i,opening:['Bonjour, j’aurais besoin d’un renseignement concernant mon voyage.','您好，我想咨询一下这次行程的安排。'],question:['Bien sûr. Est-ce qu’il s’agit du vol, des bagages ou du transport à l’arrivée ?','当然，是航班、行李还是到达后的交通问题？'],reply:['Nous allons vérifier votre dossier. En attendant, gardez vos documents à portée de main.','我们会核实您的情况，请先把证件放在方便取用的地方。']},
@@ -26,6 +35,8 @@ const scenes=[
  {re:/.*/,opening:['Bonjour, est-ce que vous avez un instant ? J’aurais besoin d’une précision.','您好，现在有空吗？我想确认一个问题。'],question:['Bien sûr, dites-moi ce que vous souhaitez éclaircir.','当然，请告诉我您想弄清楚什么。'],reply:['D’accord. Je vais vérifier ce point avant de vous répondre précisément.','好的，我先核实这一点，再给您准确答复。']},
 ];
 export function prepareImported(e:Exercise,expand:boolean,people:'auto'|'2'|'3'='auto'):Exercise{
+ if(expand&&isCheckpointInput(e))return enrichExercise(checkpointScene(e));
+ e=enrichExercise(e);
  const sentences=trainingSentences(e),hasSpeakers=e.chunks.some(c=>/^\s*[\p{L}][\p{L}\s'-]{0,25}\s*:/u.test(c.text));
  if(!expand||sentences.length>3||hasSpeakers)return enrichExercise(e);
  const text=sentences.map(s=>s.text).join(' '),scene=scenes.find(s=>s.re.test(text))!;

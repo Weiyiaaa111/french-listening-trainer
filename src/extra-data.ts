@@ -1,7 +1,8 @@
+import {longTranslations} from './long-translations';
 import type { Exercise, Module } from './data';
 import {suggestProsody} from './prosody';
 type Row = [string,string,string];
-function lesson(id:string,module:Module,title:string,translation:string,rows:Row[],tags:string[]):Exercise{return {id,module,date:'2026-10-20',title,translation,chunks:rows.map(([text,role,tip])=>({text:text.replaceAll(' / ',' '),role,tip,prosody:suggestProsody(text)})),tags,sample:true};}
+function lesson(id:string,module:Module,title:string,translation:string,rows:Row[],tags:string[]):Exercise{return {id,module,date:'2026-10-20',title,translation,chunks:rows.map(([text,role,tip],i)=>({translation:longTranslations[id]?.[i],text:text.replaceAll(' / ',' '),role,tip,prosody:suggestProsody(text)})),tags,sample:true};}
 export const extraSeeds:Exercise[]=[
 lesson('eng-meeting-long','engineering','长篇示例｜雨季施工协调会（20 句）','会议开场：本次会议主要讨论营地供水和设备进场。我们昨天要等到道路恢复通行后才能查看现场。监理希望开工前收到详细进度表。供应商曾答应周一送到的水泵仍未到场。我们暂时把它替换为租来的设备，但费用尚未获批。问题在于井的出水量低于预期。技术员将到现场再次测量，我们会请他提交书面报告。如果结果合格，营地后天就可以接通供水。不过，应先检查水质，再供厨房使用。至于人员，各班组负责人应确认明天到岗的人数。我尚未收到合同草案；承包商一发来，我就转给你们。结束前大家确认采购日程。供应商已发报价但未说明交货期，项目要求他书面确认以便安排卸货。营地负责人询问是否可以同时安装卫生设施，监理要求先批准图纸并签署场地接收记录。若夜间下雨，需要先检查排水沟。所有修改须写进纪要，口译员用法语和中文复述决定并请大家确认。最后，我们周五再开会，确定哪些已完成、哪些还需要处理。',[
 ['Bonjour à tous, cette réunion porte principalement sur l’alimentation en eau du camp et l’arrivée des engins.','会议开场','porter sur 表示涉及；两个名词组并列。'],

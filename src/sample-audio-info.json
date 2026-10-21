@@ -3,7 +3,7 @@
   "voice": "fr_FR-siwis-medium",
   "type": "pretrained-neural",
   "modelSha256": "b015076c2bedcff22fbedd5da6ffb49b7d0abb2e3bdc51e1a7906e0000e411ed",
-  "clips": 453,
+  "clips": 480,
   "license": "CC-BY-4.0",
   "source": "https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models"
 }
